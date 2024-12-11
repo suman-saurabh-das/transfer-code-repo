@@ -1,0 +1,29 @@
+UI -
+
+	▣ Wireframe - https://wireframe.cc/Vecxtw
+
+API Documentation -
+
+	▣ API link : https://www.npmjs.com/package/one-liner-joke
+	
+	▣ Installation : npm install one-liner-joke --save
+
+	▣ API calls :
+
+		import oneLinerJoke from "one-liner-joke";
+
+		◉ If include and exclude tags are empty, call function.
+			oneLinerJoke.getRandomJoke();
+
+		◉ If only include tag has data call function
+			oneLinerJoke.getRandomJokeWithTag(param1);
+			◈ param1 - "stupid"
+
+		◉ If only exclude tag has data call function
+			oneLinerJoke.getRandomJokeWithTag(param1);
+			◈ param1 - {"exclude_tags": ["dirty", "racist", "marriage"]}
+
+		◉ If include and exclude tags are having data, call API using below function.
+			oneLinerJoke.getRandomJokeWithTag(param1, param2);
+			◈ param1 - "stupid"
+			◈ param2 - {"exclude_tags": ["dirty", "racist", "marriage"]}
