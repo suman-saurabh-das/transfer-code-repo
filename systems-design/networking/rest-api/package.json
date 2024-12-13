@@ -1,0 +1,13 @@
+{
+  "name": "rest-api",
+  "version": "1.0.0",
+  "description": "rest-api created using express",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Suman Saurabh Das",
+  "license": "ISC"
+}

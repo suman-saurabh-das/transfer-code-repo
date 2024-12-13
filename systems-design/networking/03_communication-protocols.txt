@@ -1,23 +1,25 @@
-Communication protocols - Standardized rules that define how data is exchanged between devices over a network.
+Communication protocols: Standardized rules that define how data is exchanged between devices over a network.
 
-  [01] HTTP (HyperText Transfer Protocol): The protocol used for transferring web pages and resources over the internet, typically using ports 80. It uses TCP protocol.
+Types of protocols:
+
+  [01] HTTP (HyperText Transfer Protocol) - Protocol used for transferring web pages and resources over the internet, typically using ports 80. It uses TCP protocol.
 
     How HTTP Works:
-      Client Request: When you type a URL in the browser or click a link, your browser sends an HTTP request to the web server. This request includes information such as:
-        The type of request (GET, POST, etc.)
-        The resource you're requesting (e.g., a web page, image, or file)
-        Other metadata, like headers (e.g., browser type, language preferences).
-      Server Response: The web server processes the request and sends back an HTTP response. This response includes:
-        A status code (e.g., 200 for success, 404 for "not found")
+      Client Request: When you type a URL in the browser or click a link, your browser sends an HTTP request to the web server. This request includes -
+        Type of request (GET, POST, etc.)
+        Resource you're requesting (e.g., a web page, image, or file)
+        Metadata, like headers (e.g., browser type, language preferences).
+      Server Response: The web server processes the request and sends back an HTTP response. This response includes -
+        Status code (e.g., 200 for success, 404 for "not found")
         Headers with additional information (e.g., content type, server details)
         The content (e.g., HTML, images, or other data) requested by the client.
-      Rendering: The browser receives the response, processes the content (like HTML, CSS, and JavaScript), and displays the webpage to the user.
+      Rendering: Browser receives the response, processes the content (like HTML, CSS, and JavaScript), and displays the webpage to the user.
       Stateless: HTTP is stateless, meaning each request is independent, and the server does not retain any information about previous requests. If persistence is needed (e.g., login sessions), cookies or other methods are used.
 
   [02] HTTPS (HyperText Transfer Protocol Secure): A secure version of HTTP, it encrypts data exchanged between a user's browser and a web server using SSL/TLS protocols, ensuring privacy, security, and data integrity.
 
     How HTTPS Works:
-      Connection Request: User visits a website with HTTPS (e.g., https://example.com), the browser connects to the web server using the HTTP protocol, but over a secure, encrypted connection.
+      Connection Request: User visits a website with HTTPS (e.g., https://google.com), the browser connects to the web server using the HTTP protocol, but over a secure, encrypted connection.
       SSL/TLS Handshake:
         Server Authentication: The server sends its SSL/TLS certificate to the browser to prove its identity.
         Key Exchange: The browser and server negotiate a secure encryption method and exchange encryption keys.
@@ -42,7 +44,7 @@ Communication protocols - Standardized rules that define how data is exchanged b
 
     How WebSocket Works:
       Handshake:
-        The WebSocket connection starts as an HTTP request from the client to the server, known as the "handshake." The client sends a special Upgrade request to the server, indicating that it wants to switch from the HTTP protocol to the WebSocket protocol.
+        WebSocket connection starts as an HTTP request from the client to the server, known as the "handshake." The client sends a special Upgrade request to the server, indicating that it wants to switch from the HTTP protocol to the WebSocket protocol.
         If the server supports WebSockets, it responds with a 101 status code (Switching Protocols), and the connection is upgraded to WebSocket.
       Persistent Connection:
         After the handshake, the connection remains open, allowing the client and server to send messages back and forth without needing to establish new connections. This avoids the overhead of repeatedly opening and closing connections, making communication faster and more efficient.
@@ -51,21 +53,19 @@ Communication protocols - Standardized rules that define how data is exchanged b
       Closing the Connection:
         Either the client or the server can initiate the closing of the WebSocket connection. A close frame is sent, and once both sides acknowledge, the connection is terminated.
 
-Types of protocols
-
-  [01] TCP (Transmission Control Protocol) - Communication protocol used to ensure reliable data transmission over a network. It operates in the transport layer and guarantees that data is delivered correctly and in the right order. e.g. web browsing & emails protocols.
+  [05] TCP (Transmission Control Protocol) - Communication protocol used to ensure reliable data transmission over a network. It operates in the transport layer and guarantees that data is delivered correctly and in the right order. e.g. web browsing & emails protocols.
 
   How TCP works -
 
     Three-way handshake:
-      SYN: The sender requests a connection by sending a synchronization (SYN) packet.
-      SYN-ACK: The receiver acknowledges the request and sends a SYN-ACK packet back.
-      ACK: The sender confirms the connection by sending an acknowledgment (ACK) packet.
+      SYN: Sender requests a connection by sending a synchronization (SYN) packet.
+      SYN-ACK: Receiver acknowledges the request and sends a SYN-ACK packet back.
+      ACK: Sender confirms the connection by sending an acknowledgment (ACK) packet.
     Data Transmission: Once the connection is established, data is sent in small packets. Each packet contains a sequence number to ensure the correct order.
     Acknowledgment and Retransmission: The receiver sends an acknowledgment (ACK) for each packet received. If a packet is lost or corrupted, it is retransmitted.
     Connection Termination: After the data transfer is complete, the connection is closed using a four-way handshake, ensuring both sides finish their communication properly.
 
-  [02] UDP (User Datagram Protocol) - Connection-less communication protocol used for transmitting data over a network. Unlike TCP, UDP does not establish a connection or guarantee reliable delivery, making it faster but less reliable. UDP is typically used in applications where speed is more critical than reliability, such as video streaming, online gaming, and VoIP.
+  [06] UDP (User Datagram Protocol) - Connection-less communication protocol used for transmitting data over a network. Unlike TCP, UDP does not establish a connection or guarantee reliable delivery, making it faster but less reliable. UDP is typically used in applications where speed is more critical than reliability, such as video streaming, online gaming, and VoIP.
 
   How UDP works -
 
@@ -74,7 +74,7 @@ Types of protocols
     Data Transmission: Data is sent in discrete packets, each containing the destination address, source address, and a checksum for error detection.
     No Flow Control: UDP does not manage the flow of data or check for congestion, leaving the application layer to handle those concerns.
 
-  [03] SMTP (Simple Mail Transfer Protocol) - Protocol used for sending emails over the internet. It defines how email messages are transferred between email servers and from clients to servers. 
+  [07] SMTP (Simple Mail Transfer Protocol) - Protocol used for sending emails over the internet. It defines how email messages are transferred between email servers and from clients to servers. 
   SMTP is primarily used for sending messages, while protocols like IMAP or POP3 are used for receiving them.
 
   How SMTP works -
@@ -84,7 +84,7 @@ Types of protocols
     Receiving and Storing: The recipient’s mail server receives the email and stores it in the recipient's mailbox (usually through protocols like POP3 or IMAP).
     Retrieving the Email: The recipient's email client retrieves the email from the server to display it.
 
-  [04] IMAP (Internet Message Access Protocol) - Protocol used to access and manage emails stored on a mail server. Unlike POP3, IMAP allows users to view and organize their emails on the server without downloading them to their device. IMAP is ideal for users who want to manage their emails from multiple devices, as it keeps messages synchronized and accessible.
+  [08] IMAP (Internet Message Access Protocol) - Protocol used to access and manage emails stored on a mail server. Unlike POP3, IMAP allows users to view and organize their emails on the server without downloading them to their device. IMAP is ideal for users who want to manage their emails from multiple devices, as it keeps messages synchronized and accessible.
 
   How IMAP works -
 
@@ -92,7 +92,7 @@ Types of protocols
     Synchronization: Changes made on the client (like reading or moving emails) are synced with the server, ensuring consistency across multiple devices. For example, if you read an email on one device, it will appear as read on all devices.
     Continuous Storage: Emails remain on the server unless manually deleted, allowing users to access them from different devices and locations.
 
-  [05] POP3 (Post Office Protocol version 3) - Protocol used by email clients to retrieve emails from a mail server. Unlike IMAP, POP3 downloads emails from the server to the client’s device and typically removes them from the server. POP3 is commonly used when users want to access their emails on a single device and do not need to keep them synchronized across multiple devices. However, it lacks the flexibility and synchronization that IMAP provides.
+  [09] POP3 (Post Office Protocol version 3) - Protocol used by email clients to retrieve emails from a mail server. Unlike IMAP, POP3 downloads emails from the server to the client’s device and typically removes them from the server. POP3 is commonly used when users want to access their emails on a single device and do not need to keep them synchronized across multiple devices. However, it lacks the flexibility and synchronization that IMAP provides.
 
   How POP3 Works -
 
@@ -100,7 +100,7 @@ Types of protocols
     Downloading Emails: POP3 downloads emails from the server to the local device, making them available for offline viewing. Once downloaded, the emails are usually deleted from the server.
     Accessing Emails Locally: After download, emails are stored locally, and the client can read or manage them without needing an internet connection.
 
-  [06] FTP - FTP (File Transfer Protocol) is a standard protocol used to transfer files between a client and a server over a network, such as the internet. FTP is commonly used for website maintenance, file sharing, and transferring large files between systems.
+  [10] FTP - FTP (File Transfer Protocol) is a standard protocol used to transfer files between a client and a server over a network, such as the internet. FTP is commonly used for website maintenance, file sharing, and transferring large files between systems.
 
   How FTP Works -
 
@@ -109,6 +109,17 @@ Types of protocols
     Data Channel: When a file is being transferred, a separate data channel is established to send the actual file content. FTP uses two modes: Active Mode (server connects to the client) and Passive Mode (client connects to the server).
     File Transfer: Files can be uploaded to or downloaded from the server. FTP allows for file manipulation, including renaming, deleting, and changing directories.
     Connection Termination: After the transfer is complete, the FTP session is closed.
+
+What is SSL/TLS and how it works ?
+
+  SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are cryptographic protocols designed to secure communications over a computer network, such as the internet. TLS is the successor to SSL and is more secure, though the term SSL is still commonly used to refer to both.
+
+  How SSL/TLS Works:
+    Encryption: SSL/TLS encrypts data exchanged between a client (like a web browser) and a server, making it unreadable to unauthorized parties. This ensures privacy and confidentiality.
+    Authentication: SSL/TLS uses certificates to authenticate the identity of the server, ensuring that the client is communicating with the correct, trusted server.
+    Data Integrity: These protocols ensure that the data has not been altered during transmission by using hashing techniques to verify data integrity.
+    Handshake Process: When a connection is initiated, the client and server go through a handshake to agree on encryption methods and exchange keys for secure communication.
+    SSL/TLS is widely used for securing online transactions, email communication, and other data exchanges, especially in HTTPS (for web browsing) and other secure protocols.
 
 What is QUIC ?
 
@@ -129,14 +140,3 @@ What is QUIC ?
       QUIC incorporates TLS 1.3 encryption directly into the protocol, providing strong security without additional overhead. This makes it more efficient than older protocols like HTTP/2 that rely on a separate layer for encryption.
     Connection Migration:
       Seamless Migration: QUIC allows the connection to continue even if the client changes its network (e.g., switching from Wi-Fi to mobile data). The connection can migrate to a new IP address without needing to re-establish the handshake, making the protocol ideal for mobile environments.
-
-What is SSL/TLS and how it works ?
-
-  SSL (Secure Sockets Layer) and TLS (Transport Layer Security) are cryptographic protocols designed to secure communications over a computer network, such as the internet. TLS is the successor to SSL and is more secure, though the term SSL is still commonly used to refer to both.
-
-  How SSL/TLS Works:
-    Encryption: SSL/TLS encrypts data exchanged between a client (like a web browser) and a server, making it unreadable to unauthorized parties. This ensures privacy and confidentiality.
-    Authentication: SSL/TLS uses certificates to authenticate the identity of the server, ensuring that the client is communicating with the correct, trusted server.
-    Data Integrity: These protocols ensure that the data has not been altered during transmission by using hashing techniques to verify data integrity.
-    Handshake Process: When a connection is initiated, the client and server go through a handshake to agree on encryption methods and exchange keys for secure communication.
-    SSL/TLS is widely used for securing online transactions, email communication, and other data exchanges, especially in HTTPS (for web browsing) and other secure protocols.
