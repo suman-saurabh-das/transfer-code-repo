@@ -18,7 +18,7 @@
 
     e.g. Search for cars in google.com, a request is made from client that has data to fetch information about cars, and the server responds with data about cars, using REST API which uses HTTP internally to transfer data from server to the client.
 
-Benefits of REST API ?
+[02] Benefits of REST API ?
 
   Simplicity and Ease of use: Easy to implement and use..
   Stateless: Each request is independent, with no stored data from previous requests.
@@ -32,7 +32,7 @@ Benefits of REST API ?
   Security: Provides strong authentication methods for better security.
   e.g. https://dummyjson.com/docs
 
-Building blocks of REST API
+[03] Building blocks of REST API
     
   Request: For any HTTP request that is made between 2 web-service, it has 3 parts -
     Request line: Tells about the methods (GET), URL (path we are hitting) & protocol (HTTP/1.1).
@@ -44,36 +44,62 @@ Building blocks of REST API
     Headers: Server related information.
     Body: Data requested from server (json data).
 
-  Creating a REST API using express.js
-    Create folder RestApi, inside it Run : npm init (initialize an node project with package.json)
-    Run : npm i express --save (install express package)
-    Create server file : index.js
-    In package.json file, add a property "type":"module" (to use import statements)
-    In package.json file, add a start script "start":"node ./index.js" (to run the app)
+[04] What is an URL ?
 
-  What is an URL ? 
-    A URL (Uniform Resource Locator) is the address used to access resources on the internet. It provides the means to locate a specific resource, such as a webpage, image, video, or file, on a web server.
+  A URL (Uniform Resource Locator) is the address used to access resources on the internet. It provides the means to locate a specific resource, such as a webpage, image, video, or file, on a web server.
 
-  Parts of an URL
-    Scheme/Protocol: Specifies the protocol used to access the resource, e.g., https://.
-    Host: The domain name or IP address of the server hosting the resource, e.g., www.example.com.
-    Port (optional): Specifies a port number on the server, e.g., :8080. If omitted, the default ports (80 for HTTP, 443 for HTTPS) are used.
-    Path: The specific location of the resource on the server, e.g., /about, /images/pic.jpg.
-    Query (optional): A string that provides additional parameters, e.g., ?id=123, which can be used to filter or search data.
-    Fragment (optional): Points to a specific section within the resource, e.g., #section2.
-    Example:
-    https://www.example.com/products?id=123#reviews
+[05] Parts of an URL
 
-    Protocol: https
-    Host: www.example.com
-    Path: /products
-    Query: ?id=123
-    Fragment: #reviews
+  Scheme/Protocol: Specifies the protocol used to access the resource, e.g., https://
+  Host: The domain name or IP address of the server hosting the resource, e.g., www.example.com
+  Port (optional): Specifies a port number on the server, e.g., :8080. If omitted, the default ports (80 for HTTP, 443 for HTTPS) are used.
+  Path: The specific location of the resource on the server, e.g., /forum, /images/pic.jpg. Path can also be dynamic.
+  Query (optional): A string that provides additional parameters, e.g., ?tag=network, which can be used to filter or search data.
+  Fragment (optional): Points to a specific section within the resource, e.g., #top. This part of URL containing the # (fragment) is not sent by client to the server.
+  Example: https://www.example.com/forum/questions/?tag=network&order=news#top
+
+    Scheme/Protocol: https
+    Host: www.example.com (subdomain: www, domain: example, TLD: com)
+    Path: /forum/products (subdirectory: forum, subdirectory: questions)
+    Query: ?tag=network&order=news (key: tag, value: networking)
+    Fragment: #top
+
+[06] Types of HTTP methods -
+
+  GET: Retrieves data from the server.
+  POST: Submits data to be processed by the server.
+  PUT: Updates or replaces data on the server.
+  PATCH: Partially updates data on the server.
+  DELETE: Deletes data from the server.
+  HEAD: Retrieves the headers of a resource, without the body.
+  OPTIONS: Describes the communication options for the target resource. Used primarily for cross domain authentication.
+  CONNECT: Establishes a tunnel to the server, often for SSL encryption.
+  TRACE: Returns the full request received by the server, mainly for diagnostic purposes.
+
+[07] Creating a REST API for a TODO application using express.js
+
+  Create folder RestApi, inside it Run : npm init (initialize an node project with package.json)
+  Run : npm i express --save (install express package)
+  Run : npm i nodemon --save (install nodemon package)
+  Create server file : index.js
+  In package.json file, add a property "type":"module" (to use import statements)
+  In package.json file, add a start script "start":"nodemon ./index.js" (to run the app)
+
+  Path: http://localhost:5111/api/todos
+
+    Features         Operations      Methods
+    ----------------------------------------
+    Create TODO  --->  Create  --->  POST
+    View TODO    --->  Read    --->  GET
+    Edit TODO    --->  Update  --->  PUT / PATCH
+    Delete TODO  --->  Delete  --->  DELETE
+
+    NOTE - Data passed between client/server is always serialized stringified data.
+    Serialized data is exchanged between the resources (client/server). In order to serialize our newTodo data received at server end from client, we need to parse it using body-parser.
+    For this we will use a package body-parser, run : npm i body-parser --save
 
 
-  Understand HTTP methods.
-
-  Understand Headers, Request, Response, Status codes.
+Understand Headers, Request, Response, Status codes.
 
 Build an App (REST API)
 
