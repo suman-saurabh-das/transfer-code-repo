@@ -88,7 +88,7 @@
   Path: http://localhost:5111/api/todos
 
     Features         Operations      Methods
-    ----------------------------------------
+    -------------------------------------------
     Create TODO  --->  Create  --->  POST
     View TODO    --->  Read    --->  GET
     Edit TODO    --->  Update  --->  PUT / PATCH
@@ -98,15 +98,142 @@
     Serialized data is exchanged between the resources (client/server). In order to serialize our newTodo data received at server end from client, we need to parse it using body-parser.
     For this we will use a package body-parser, run : npm i body-parser --save
 
+  Configurations -
 
-Understand Headers, Request, Response, Status codes.
+    Methods         GET          POST       PUT          DELETE
+    --------------------------------------------------------------
+    URL             /todos       /todos     /todos/:id   /todos/:id
+                    /todos/:id
+    Response Body   empty        optional   optional     empty
 
-Build an App (REST API)
+[08] Understand Request & Response Headers.
 
-Use Postman
+  Request Headers
+  
+    Header: Host
+    Use-case: Provides information about domain host (origin host).
+    Example: www.1.cdn.example.com
+
+    Header: Origin
+    Use-case: Domain from which the request is getting originated.
+    Example: www.example.com
+
+    Header: Referer
+    Use-case: Indicates the address of previous web page from which request was made.
+    Example: https://example.com/previous-page
+
+    Header: User-Agent
+    Use-case: Provides information to identify the client. 
+      User agent string containing info about OS, browser, version, etc.
+    Example: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/131.0.0.0
+
+    Header: Accept
+    Use-case: Informs the server what type of response to expect (Response content-type).
+    Example: application/json, text/javascript
+
+    Header: Accept-Language
+    Use-case: Indicates the preferred response content language.
+    Example: en-US, en:q=0.9
+
+    Header: Accept-Encoding
+    Use-case: Encoding algorithm used to encode data.
+    Example: gzip, deflate, br
+
+    Header: Connection
+    Use-case: Keep TCP connection open.
+    Example: keep-alive, close
+
+    Header: Authorization
+    Use-case: Send client-side credentials.
+    Example: bearer-token
+
+    Header: Cookie
+    Use-case: Any data can be sent to server/client using cookie.
+      Previous server token can be resend.
+    Example: key=value
+
+    Header: If-Modified-Since
+    Use-case: Send new data only if data is modified after a particular time.
+
+    Header: Cache-control
+    Use-case: Maximum time (age) for which we need to store the information.
+    
+  Response Headers
+
+    Header: Date
+    Use-case: Time when the response was generated in the server.
+    Example: Sat, 14 Dec 2024 13:39:14 GMT
+    
+    Header: Server
+    Use-case: Provides us server information.
+      Explicitly remove this header as it can be used to exploit the server loopholes.
+    Example: cloudflare, ngnix
+
+    Header: Content-Type
+    Use-case: Type of response content.
+    Example: text/html, application/json
+    
+    Header: Content-Length
+    Use-case: Talks about original body response length. Tells how many bytes we will get in response, can be used to calculate how much data is yet to be downloaded.
+    Example: 256 bytes
+    
+    Header: Set-Cookie
+    Use-case: Informs about cookie that we need to store for future response.
+    Example: user_id=123
+    
+    Header: Content-Encoding
+    Use-case: Type of response content encoding.
+    Example: br
+    
+    Header: Cache-Control
+    Use-case:  Maximum time (age) for which we need to store the information.
+
+    Header: Last-Modified
+    Use-case: Time when the data was last modified.
+    
+    Header: E-Tag
+    Use-case: C be used to check if E-Tag on server & client are same or not.
+      If they are not same. we can perform an action e.g. make a new request.
+    
+    Header: Expires
+    Use-case: Maximum time we can store the data after which it will be invalid.
+
+[09] Status codes
+
+  Tells what happened to the request made to the server can be identified by status codes.
+  
+  Types of status codes -
+
+    Status Range: 1XX        Use-case: Information
+    Status Code:  100  --->  Continue (keep sending data)
+    Status Code:  101  --->  Switching protocol (http to web socket)
+
+    Status Range: 2XX        Use-case: Success
+    Status Code:  200  --->  OK (response is successful and we will get data)
+    Status Code:  201  --->  Created (for POST request - data insertion)
+    Status Code:  202  --->  Accepted (request has be accepted and will be processed)
+    Status Code:  204  --->  No content (for DELETE request - data deletion)
+    Status Code:  206  --->  Partial content (data comes in chunks from server to client)
+
+    Status Range: 3XX        Use-case: Redirection
+    Status Code:  301  --->  Moved Permanently (resource has been moved to a new URL)
+    Status Code:  302  --->  Moved Temporarily (resource has been moved to a new URL)
+    Status Code:  307  --->  Equivalent to 302 but retains the method (POST/PUT)
+    Status Code:  308  --->  Equivalent to 301 but retains the method (POST/PUT)
+
+    Status Range: 4XX        Use-case: Client-side Error
+    Status Code:  400  --->  Bad Request (sending incorrect data)
+    Status Code:  401  --->  Unauthorized (no access to the application)
+    Status Code:  403  --->  Authorization (no access to a specific resource)
+    Status Code:  404  --->  Not found (content not found)
+    Status Code:  405  --->  Method not allowed (when the URL doesn't support the method)
+    Status Code:  429  --->  Failed because of concurrent request (simultaneous update of same data)
+
+    Status Range: 5XX        Use-case: Server-side Error
+    Status Code:  500  --->  Internal server error (Issue in server, which it couldn't process)
+    Status Code:  502  --->  Bad Gateway (Issue with API, proxy error)
+    Status Code:  503  --->  Service unavailable (Server is down)
+    Status Code:  504  --->  Gateway Timeout (Request couldn't be processed in given time)
+    Status Code:  507  --->  Insufficient Storage (Server storage becomes full)
 
 Concepts of HTTP1/2/3
-
-Best practices of using REST
-
-Advanced concepts (Headers, versioning)

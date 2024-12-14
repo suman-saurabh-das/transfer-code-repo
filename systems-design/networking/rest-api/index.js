@@ -59,10 +59,12 @@ app.post("/todos", (req, res) => {
   // In POST request, data has to be sent in the body.
   const newTodo = req.body;
   todos.push(newTodo);
-  res.json({message: "New to-do added !"});
+  res.status(201).json({message: "New To-Do added !"});
 })
-
 // In order to make a POST request, we will use postman vs-code extension.
+
+// PUT - Sends entire information to the server to update the data.
+// PATCH - Sends partial information to the server to update the data.
 
 // UPDATE | PUT method - Updates data on the server.
 app.put("/todos/:id", (req, res) => {
@@ -75,7 +77,9 @@ app.put("/todos/:id", (req, res) => {
       id: todoParamsId,
       ...updatedTodoData
     }
-    res.json({message: "to-do updated successfully !"})
+    res.status(201).json({message: "To-Do updated successfully !"})
+  } else {
+    res.status(400).json({message: "To-Do id doesn't exist !"})
   }
 })
 
@@ -85,6 +89,11 @@ app.delete("/todos/:id", (req, res) => {
   const todoIndex = todos.findIndex(todo => todo.id === todoParamsId);
   if (todoIndex !== -1) {
     todos.splice(todoIndex, 1);
-    res.json({message: "to-do deleted successfully !"})
+    res.json({message: "To-To deleted successfully !"})
   }
 })
+
+// HEAD - Retrieves information about the headers.
+// OPTIONS - Used for security. (Primarily for authentication of cross-domain resources)
+// CONNECT - Used to establish connection between the resources (client/server), so that next time the connection happens faster.
+// TRACE - Used to diagnose request and response messages on any of the resources (client/server).
