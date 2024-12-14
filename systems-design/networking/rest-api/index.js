@@ -44,9 +44,9 @@ app.use(bodyParser.json());
 
 // Data
 const todos = [
-  { id: "1", todo: "task 1", completed: false },
-  { id: "2", todo: "task 2", completed: true },
-  { id: "3", todo: "task 3", completed: false },
+  { id: 1, todo: "task 1", completed: false },
+  { id: 2, todo: "task 2", completed: true },
+  { id: 3, todo: "task 3", completed: false },
 ]
 
 // READ | GET method - Retrieve data from the server.
@@ -59,11 +59,32 @@ app.post("/todos", (req, res) => {
   // In POST request, data has to be sent in the body.
   const newTodo = req.body;
   todos.push(newTodo);
-  res.json("New to-do added !");
+  res.json({message: "New to-do added !"});
 })
 
 // In order to make a POST request, we will use postman vs-code extension.
 
-// UPDATE
+// UPDATE | PUT method - Updates data on the server.
+app.put("/todos/:id", (req, res) => {
+  const updatedTodoData = req.body;
+  const todoParamsId = Number(req.params.id);
+  const todoIndex = todos.findIndex(todo => todo.id === todoParamsId);
 
-// DELETE
+  if (todoIndex !== -1) {
+    todos[todoIndex] = {
+      id: todoParamsId,
+      ...updatedTodoData
+    }
+    res.json({message: "to-do updated successfully !"})
+  }
+})
+
+// DELETE | DELETE method - Deletes data from the server.
+app.delete("/todos/:id", (req, res) => {
+  const todoParamsId = Number(req.params.id);
+  const todoIndex = todos.findIndex(todo => todo.id === todoParamsId);
+  if (todoIndex !== -1) {
+    todos.splice(todoIndex, 1);
+    res.json({message: "to-do deleted successfully !"})
+  }
+})
