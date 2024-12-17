@@ -51,21 +51,6 @@ class LinkedList {
     this.size++;
   }
 
-  // Printing nodes in a linked list
-  print() {
-    if (this.isEmpty()) {
-      console.log("Linked list is empty !");
-    } else {
-      let cur = this.head;
-      let listValues = ""
-      while (cur) {
-        listValues = listValues + `${cur.value} `
-        cur = cur.next;
-      }
-      console.log(listValues);
-    }
-  }
-
   // Add a node to the end of linked list.
   append(value) {
     const node = new Node(value);
@@ -80,22 +65,92 @@ class LinkedList {
     }
     this.size++;
   }
+
+  // Add a node at any index in the linked list.
+  insert(value, index) {
+    if (index < 0 || index > this.size) {
+      return;
+    }
+    if (index === 0) {
+      this.prepend(value);
+    } else {
+      const node = new Node(value);
+      let prev = this.head;
+      for (let i = 1; i < index; i++) {
+        prev = prev.next;
+      }
+      node.next = prev.next;
+      prev.next = node;
+      this.size++;
+    }
+  }
+
+  // Removing a node from any index in a linked.
+  removeFrom(index) {
+    if (index < 0 || index > this.size) {
+      return;
+    }
+    let removedNode;
+    if (index === 0) {
+      removedNode = this.head;
+      this.head = this.head.next;
+    } else {
+      let prev = this.head;
+      for (let i = 1; i < index; i++) {
+        prev = prev.next;
+      }
+      removedNode = prev.next;
+      prev.next = removedNode.next;
+      removedNode.next = null;
+    }
+    this.size--;
+    return removedNode.value;
+  }
+
+  // Printing nodes in a linked list
+  print() {
+    if (this.isEmpty()) {
+      console.log("Linked list is empty !");
+    } else {
+      let cur = this.head;
+      let listValues = ""
+      while (cur) {
+        listValues = listValues + `${cur.value} `
+        cur = cur.next;
+      }
+      console.log(listValues, "\n");
+    }
+  }
 }
 
 const linkedList = new LinkedList();
-console.log("Size of linked-list :", linkedList.getSize());
-console.log("Is linked-list empty :", linkedList.isEmpty());
+console.log("Size of linked-list :", linkedList.getSize(), "\n");
+console.log("Is linked-list empty :", linkedList.isEmpty(), "\n");
 
-linkedList.print();
-
+console.log("Linked list after prepending 3 elements");
 linkedList.prepend(30);
 linkedList.prepend(20);
 linkedList.prepend(10);
 
 linkedList.print();
 
+console.log("Linked list after appending 3 elements");
 linkedList.append(40);
 linkedList.append(50);
 linkedList.append(60);
+
+linkedList.print();
+
+console.log("Linked list after inserting elements at index 0, 1, 2");
+linkedList.insert(5, 0);
+linkedList.insert(15, 1);
+linkedList.insert(25, 2);
+
+linkedList.print();
+
+console.log("Linked list after removing elements at index 0, 1, 2");
+linkedList.removeFrom(0);
+linkedList.removeFrom(1);
+linkedList.removeFrom(2);
 
 linkedList.print();
