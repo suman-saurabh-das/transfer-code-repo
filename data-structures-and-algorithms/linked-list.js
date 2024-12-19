@@ -94,6 +94,7 @@ class LinkedList {
     if (index === 0) {
       removedNode = this.head;
       this.head = this.head.next;
+      removedNode.next = null;
     } else {
       let prev = this.head;
       for (let i = 1; i < index; i++) {
@@ -105,6 +106,33 @@ class LinkedList {
     }
     this.size--;
     return removedNode.value;
+  }
+
+  removeValue(value) {
+    // Case 1: List is empty
+    if (this.isEmpty()) {
+      return null;
+    }
+    // Case 2: Head node has the value to be removed.
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      this.size--;
+      return value;
+    } else {
+      // Case 3: Find the node & remove it if it exists else return null.
+      let removedNode = null, prev = this.head;
+      while (prev.next && prev.next.value !== value) {
+        prev = prev.next;
+      }
+      if (prev.next) {
+        removedNode = prev.next;
+        prev.next = removedNode.next;
+        removedNode.next = null;
+        this.size--;
+        return value;
+      }
+      return null;
+    }
   }
 
   // Printing nodes in a linked list
@@ -152,5 +180,12 @@ console.log("Linked list after removing elements at index 0, 1, 2");
 linkedList.removeFrom(0);
 linkedList.removeFrom(1);
 linkedList.removeFrom(2);
+
+linkedList.print();
+
+console.log("Linked list after removing elements with values 15, 30, 60");
+linkedList.removeValue(15);
+linkedList.removeValue(30);
+linkedList.removeValue(60);
 
 linkedList.print();
