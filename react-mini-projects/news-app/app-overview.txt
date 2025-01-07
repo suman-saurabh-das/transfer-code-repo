@@ -1,0 +1,122 @@
+UI -
+
+	▣ Wireframe for Mobile: https://wireframe.cc
+	▣ Wireframe for Desktop: https://wireframe.cc
+
+Functionality -
+
+  ▣ Basic -
+    ◉ Search news by search string.
+    ◉ Show top news headlines for the country in which user resides.
+    ◉ Show news for various categories.
+    ◉ Dark/Light mode.
+    ◉ Set location for which you need the news.
+    ◉ Set language in which you need the news.
+
+  ▣ Advanced -
+    ◉ Pagination -
+      ◈ Fetch only first 10 / 20 news articles, fetch rest based on pagination.
+    ◉ History feature: Show a list of all the recently visited news.
+    ◉ Bookmark feature: Save news to local storage to fetch them for offline viewing.
+    ◉ Notification: Show notification for major and latest news.
+    ◉ Personalization -
+      ◈ Add or Remove default news categories.
+      ◈ Suggest new categories based on what the user views.
+    ◉ Implement login/logout feature.
+
+  ▣ Category menu -
+    politics, sports, business, technology, entertainment, health, science, lifestyle, travel, culture, education, environment, other.
+
+  ▣ Settings menu -
+    Activity
+      History, Bookmark, Set location (for which to retrieve news), 
+      Set language (in which to retrieve news)
+    Preferences
+      Light / dark mode, Font increase / decrease
+    
+  Add-On functionality -
+    ◉ Locate the user using Geo location api / Use geo-location.js. -> (latitude, longitude) 
+
+API Documentation - https://worldnewsapi.com/docs/
+
+Search: Search and filter news by text, date, location, category, language, and more. The API returns a list of news articles matching the given criteria. Each returned article includes the title, the full text of the article, a summary, image URL, video URL, the publish date, the authors, the category, the language, the source country, and the sentiment of the article. You can set as many filtering parameters as you like, but you have to set at least one, e.g. text or language.
+
+  Note: If you sort by publish-time you must set either text or earliest-publish-date and latest-publish-date, otherwise the time range will be automatically limited to the last 31 days.
+
+  GET https://api.worldnewsapi.com/search-news
+  e.g. https://api.worldnewsapi.com/search-news?text=earth+quake&language=en&earliest-publish-date=2024-04-01
+
+  ▣ Params -
+    
+    ◉ text -
+      ◈ The text to match in the news content (at least 3 characters, maximum 100 characters).
+      ◈ All query terms are expected. Use uppercase OR to search for any terms e.g. tesla OR ford. 
+      ◈ Exclude terms by putting a minus sign (-) in front of the term, e.g. tesla -ford.
+      ◈ e.g. text: tesla
+
+    ◉ source-country: The ISO 3166 country code from which the news should originate.
+      https://worldnewsapi.com/docs/country-codes/ e.g. source-country: us
+
+    ◉ language: The ISO 6391 language code of the news.
+      https://worldnewsapi.com/docs/language-codes/ e.g. language: en
+
+    ◉ earliest-publish-date: The news must have been published after this date.
+      e.g. earliest-publish-date: 2022-04-22 16:12:35
+
+    ◉ latest-publish-date:	The news must have been published before this date.
+      e.g. latest-publish-date: 2022-04-22 16:12:35
+
+    ◉ categories -
+      ◈ A comma-separated list of categories. 
+      ◈ Only news from any of the given categories will be returned. 
+      ◈ Possible categories are politics, sports, business, technology, entertainment, health, science, lifestyle, travel, culture, education, environment, other.
+      e.g. categories: politics,sports
+
+    ◉ location-filter -
+      ◈ Filter news by radius around a certain location. 
+      ◈ Format is "latitude,longitude,radius in kilometers". Radius must be between 1 and 100 km.
+      e.g. location-filter: 51.050407,13.737262,20
+      
+    ◉ sort:	The sorting criteria (publish-time). e.g. sort: publish-time
+    ◉ sort-direction: Sort in ascending or descending (ASC or DESC). e.g. sort-direction :ASC
+
+    ◉ offset:	The number of news to skip in range [0,100000] e.g. offset: 0
+
+    ◉ number: The number of news to return in range [1,100] e.g. number: 10
+
+  ▣ Headers -
+
+    ◉ x-api-key: Your API key. e.g. x-api-key: abcd1234
+
+Top Headlines: Get the top news from a country in a language for a specific date. The top news are clustered from multiple sources in the given country. The more news in a cluster the higher the cluster is ranked.
+
+  GET https://api.worldnewsapi.com/top-news
+  e.g. https://api.worldnewsapi.com/top-news?source-country=us&language=en&date=2024-05-29
+
+  ▣ Params -
+
+    ◉ source-country:	The ISO 3166 country code of the country for which top news should be retrieved. e.g. source-country: us
+  
+    ◉ language:	The ISO 6391 language code of the top news. The language must be one spoken in the source-country. e.g. language: en
+
+    ◉ date:	The date for which the top news should be retrieved. If no date is given, the current day is assumed. e.g. date: 2024-05-30
+
+    ◉ headlines-only: Whether to only return basic information such as id, title, and url of the news.
+    e.g. headlines-only: false
+
+  ▣ Headers -
+
+    ◉ x-api-key: Your API key. e.g. x-api-key: abcd1234
+    
+Geo-coordinates: Retrieve the latitude and longitude of a location name. Given this information you can fill the location-filter parameter in the news search endpoint.
+
+  GET https://api.worldnewsapi.com/geo-coordinates
+  e.g. https://api.worldnewsapi.com/geo-coordinates?location=Tokyo%2C%20Japan
+
+  ▣ Params -
+
+    ◉ location: The address or name of the location. e.g. location: Tokyo%2C%20Japan
+
+  ▣ Headers -
+
+    ◉ x-api-key: Your API key. e.g. x-api-key: abcd1234
