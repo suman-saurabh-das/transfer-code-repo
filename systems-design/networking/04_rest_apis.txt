@@ -235,5 +235,3 @@
     Status Code:  503  --->  Service unavailable (Server is down)
     Status Code:  504  --->  Gateway Timeout (Request couldn't be processed in given time)
     Status Code:  507  --->  Insufficient Storage (Server storage becomes full)
-
-Concepts of HTTP1/2/3

@@ -1,0 +1,84 @@
+[01] How the web works ?
+
+  Client -> Router -> ISP -> DNS -> ISP -> Client -> Server -> Data -> Client
+
+	Client: A device or application that requests a server to access resources or services, such as a smartphone browsing the web. It communicates over a network using protocols like HTTP or FTP.
+	
+	Server: A powerful device or software application that can process a request and provide resources, services, or data to clients over a network. Examples include web servers, file servers, and database servers.
+	
+	IP address: An unique numerical identifier assigned to each device on a network, enabling communication between them. It can be public (used on the internet) or private (within a local network). Examples include IPv4 (192.168.0.1) and IPv6 (2001:0db8::1).
+	
+	Domain name: Human-readable address used to access websites, like google.com. It maps to an IP address for easier navigation on the internet. Domain names are managed through domain registrars and DNS.
+	
+	Parts of a domain name -
+		Root domain: e.g. "."
+		Top level domain name: e.g. com, gov, org, edu
+		Second level domain name (domain): e.g. google, microsoft, expedia
+		Third level domain name (sub-domain): e.g. www, download, sales
+	
+	Domain Name Server (DNS): is a system (collection of servers) that translates human-readable domain names into IP addresses. When you enter a domain name in a browser, DNS resolves it to the corresponding server's IP address. It acts as the internet's address book.
+	
+	ISP (Internet Service Provider): Company that provides internet access to homes and businesses. It supplies the necessary infrastructure and services for connecting to the internet, such as broadband or fiber-optic connections.
+	
+	Modem: Device that modulates and demodulates signals, enabling internet connectivity over telephone lines, cable, or fiber. It converts digital data from a computer into a format suitable for transmission and vice versa.
+	
+	Router: Networking device that connects multiple devices to a network and directs data traffic between them. It manages communication between your local network and the internet, ensuring data packets reach the correct destination.
+	
+[02] Client side handling of IP address: Browser checks if IP address is available in -
+	  
+  Browser Cache: temporarily stores web resources like HTML, images, and DNS query results locally to speed up page loading and reduce server requests. When resolving a domain name, the browser's DNS cache stores the corresponding IP address to avoid redundant DNS lookups. This reduces latency and network load, improving browsing speed and system efficiency in networking.
+
+  Service worker: is a script that runs in the background of a web browser, separate from the main browser thread, enabling advanced web capabilities. Service workers are essential in building Progressive Web Apps (PWAs). It is primarily used for -
+    Caching Assets: It intercepts network requests, allowing offline functionality by serving cached content.
+    Background Sync: Performs tasks like syncing data when device regains internet connectivity.
+    Push Notifications: Enables web apps to send notifications even when the app is not active.
+	
+	NOTE: At a time, browser can make 6-8 parallel requests after which it queues, remaining requests.
+	
+	Operating system caching: is often used for testing, blocking sites, or overriding DNS settings for specific domains.
+
+		Host File: local file in an operating system that maps domain names to IP addresses, bypassing DNS lookups.
+
+		IP Address Caching: By modifying the host file, you can manually cache IP addresses, ensuring faster resolution and overriding external DNS entries.
+		
+	Router caching: Router temporarily stores IP address routing information to speed up packet forwarding and reduce the need for repeated route lookups.
+	
+	ISP-Level caching: Refers to Internet Service Providers storing frequently accessed content, such as videos, web pages, or software updates, within their own network. This reduces bandwidth usage and improves content delivery speed for their customers by serving cached data locally rather than fetching it repeatedly from external servers.
+
+		Peering: Occurs when two ISPs connect their networks directly to exchange traffic without a third-party transit provider, reducing latency and costs. At a regional level, ISPs set up peering points to facilitate faster data exchange between neighboring networks, ensuring efficient access to resources.
+		
+		Caching: Regional ISPs deploy content caches close to end-users to store frequently accessed content locally. (e.g., for popular platforms like YouTube or Netflix) This reduces traffic on upstream networks, lowers latency and improves user experience for regional consumers.
+		
+[03] ICANN (Internet Corporation for Assigned Names and Numbers): Nonprofit organization responsible for managing and coordinating the global Domain Name System (DNS), IP address allocation, and internet protocol standards. It ensures the stable and secure operation of the internet by overseeing key naming and addressing systems.
+	
+[04] WHOIS: Publicly accessible database that provides information about the registered owners of domain names, including contact details and registration dates. It is used for domain management, ownership verification, and resolving disputes related to internet domains.
+	
+[05] TCP (Transmission Control Protocol): Protocol used on the internet to ensure reliable communication between computers. It divides the data into smaller packets, sends them across the network, and then reassembles them in the correct order at the destination. TCP provides error checking, retransmits lost packets, and manages congestion to ensure that data is accurately delivered and efficiently used. It is widely used in web browsing, email, and file transfers.
+	
+	TCP establishes a connection using a three-way handshake -
+
+		SYN: The client sends a SYN (synchronize) packet to initiate a connection.
+		SYN-ACK: The server responds with a SYN-ACK (synchronize-acknowledge) packet to acknowledge the request and synchronize its end.
+		ACK: The client sends an ACK (acknowledge) packet to confirm the connection is established, enabling data transfer.
+	
+[06] SSL (Secure Sockets Layer) handshake: is the process of establishing a secure connection between a client (e.g., a browser) and a server. This process ensures data integrity, confidentiality, and authenticity over the connection.
+
+  During the handshake -
+
+		Client Hello: Client sends a "Hello" message to the server. This includes the SSL/TLS version, a list of supported encryption algorithms (cipher suites), and a randomly generated number.
+		
+		Server Hello: Server responds with its "Hello" message. This includes the chosen encryption algorithm, its SSL/TLS version, and another random number. The server also sends its digital certificate containing its public key.
+		
+		Certificate Validation: The client verifies the server's certificate using a trusted Certificate Authority (CA). This ensures the server is authentic and not an imposter.
+		
+		Key Exchange -
+			The client generates a "pre-master secret" (a random number) and encrypts it with the server's public key (from the certificate).
+			The encrypted "pre-master secret" is sent to the server.
+			The server decrypts it using its private key.
+		
+		Session Key Generation: Both the client and server use the "pre-master secret" and the previously exchanged random numbers to independently generate the same symmetric session key.
+		Finished Messages: Both sides send a message encrypted with the session key to confirm that encryption and communication are set up correctly.
+		
+		Secure Communication Begins: After the handshake, all communication between the client and server is encrypted using the shared session key.
+
+[07] How webpage renders

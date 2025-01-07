@@ -1,4 +1,5 @@
 /*
+
   [01] Linked List
 
   ▣ A linked list is a linear data structure that includes a series of connected nodes.
@@ -29,18 +30,19 @@ class LinkedList {
     this.size = 0;
   }
 
-  // Check if linked list is empty.
   isEmpty() {
+    // Check if linked list is empty.
     return this.size === 0;
   }
 
-  // Returns the size of linked list.
   getSize() {
+    // Returns the size of linked list.
     return this.size;
   }
 
-  // Adding a node to the start of linked list.
+  // Time complexity : O(1)
   prepend(value) {
+    // Add a node to the start of linked list.
     const node = new Node(value);
     if (this.isEmpty()) {
       this.head = node;
@@ -51,8 +53,9 @@ class LinkedList {
     this.size++;
   }
 
-  // Add a node to the end of linked list.
+  // Time complexity : O(n)
   append(value) {
+    // Add a node to the end of linked list.
     const node = new Node(value);
     if (this.isEmpty()) {
       this.head = node;
@@ -66,8 +69,9 @@ class LinkedList {
     this.size++;
   }
 
-  // Add a node at any index in the linked list.
+  // Time complexity : O(n)
   insert(value, index) {
+    // Add a node at any index in the linked list.
     if (index < 0 || index > this.size) {
       return;
     }
@@ -85,8 +89,9 @@ class LinkedList {
     }
   }
 
-  // Removing a node from any index in a linked.
+  // Time complexity : O(n)
   removeFrom(index) {
+    // Removing a node from any index in a linked list.
     if (index < 0 || index > this.size) {
       return;
     }
@@ -108,8 +113,9 @@ class LinkedList {
     return removedNode.value;
   }
 
+  // Time complexity : O(n)
   removeValue(value) {
-    // Case 1: List is empty
+    // Case 1: List is empty.
     if (this.isEmpty()) {
       return null;
     }
@@ -120,10 +126,12 @@ class LinkedList {
       return value;
     } else {
       // Case 3: Find the node & remove it if it exists else return null.
-      let removedNode = null, prev = this.head;
+      let removedNode = null,
+        prev = this.head;
       while (prev.next && prev.next.value !== value) {
         prev = prev.next;
       }
+      // Case 3a: Element is found in linked list.
       if (prev.next) {
         removedNode = prev.next;
         prev.next = removedNode.next;
@@ -131,19 +139,53 @@ class LinkedList {
         this.size--;
         return value;
       }
+      // Case 3b: Element is not found in linked list.
       return null;
     }
   }
 
-  // Printing nodes in a linked list
+  // Time complexity : O(n)
+  search(value) {
+    // Search for a value in linked list.
+    if (this.isEmpty()) {
+      return -1;
+    } else {
+      let i = 0;
+      let cur = this.head;
+      while (cur) {
+        if (cur.value === value) {
+          return i;
+        }
+        i++;
+        cur = cur.next;
+      }
+      return -1;
+    }
+  }
+
+  // Time complexity : O(n)
+  reverse() {
+    let cur = this.head,
+      prev = null;
+    while (cur) {
+      let next = cur.next;
+      cur.next = prev;
+      prev = cur;
+      cur = next;
+    }
+    this.head = prev;
+  }
+
+  // Time complexity : O(n)
   print() {
+    // Printing nodes in a linked list.
     if (this.isEmpty()) {
       console.log("Linked list is empty !");
     } else {
       let cur = this.head;
-      let listValues = ""
+      let listValues = "";
       while (cur) {
-        listValues = listValues + `${cur.value} `
+        listValues = listValues + `${cur.value} `;
         cur = cur.next;
       }
       console.log(listValues, "\n");
@@ -188,4 +230,12 @@ linkedList.removeValue(15);
 linkedList.removeValue(30);
 linkedList.removeValue(60);
 
+linkedList.print();
+
+console.log("Element 10 is at index :", linkedList.search(10));
+console.log("Element 40 is at index :", linkedList.search(40));
+console.log("Element 50 is at index :", linkedList.search(50));
+
+linkedList.reverse();
+console.log("\nReversed linked list :");
 linkedList.print();
