@@ -1,0 +1,28 @@
+UI -
+
+	▣ Wireframe - https://wireframe.cc/08XFBU
+
+Functionality -
+
+	▣ Search for jokes using a search string.
+	▣ Set number of jokes to be fetched. (Max 10)
+	▣ Filter jokes based on single / multipart.
+	▣ Filter joke by category - Programming,Miscellaneous,Dark,Pun,Spooky,Christmas.
+	▣ Filter joke by flags - nsfw,religious,political,racist,sexist,explicit.
+
+API Documentation - https://sv443.net/jokeapi/v2/
+
+	● Search: Search for jokes.
+
+		GET https://v2.jokeapi.dev/joke/Any
+
+		To set the category, replace "Any" with <Category-value>
+		Where it can be string containing values: Programming,Miscellaneous,Dark,Pun,Spooky,Christmas
+		e.g. https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Dark,Pun,Spooky,Christmas
+
+		▣ Params - 
+		
+			◉ contains: Search for a joke that contains this search string. e.g. contains=car
+			◉ amount: Number of jokes to be fetched. Default value is 1. e.g. amount=2
+			◉ type: Type of joke. Default value will have both single and multipart. (Can be either single or multipart) e.g. type=single
+			◉ blacklistFlags: Blacklist the jokes based on flag selected. (Can be string containing values nsfw,religious,political,racist,sexist,explicit) e.g. blacklistFlags=nsfw
