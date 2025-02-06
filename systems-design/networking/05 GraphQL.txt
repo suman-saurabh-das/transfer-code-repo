@@ -1,0 +1,131 @@
+[01] What is GraphQL ?
+
+  Scenario - Consider we have 3 api's (one each for continents, countries and languages)
+    Now to fetch data using -
+      REST we can make a call to individual APIs to get the required data.
+      GraphQL, we can get data by making a single request where we mention what all we need.
+
+  GraphQL - Graph query language.
+    Any data that exists on the internet can be represented as a graph at a high level because all data is interconnected e.g. Social media data.
+    GraphQL helps us in fetching / querying the data from the graph in a easy, structured and timely format. It gives power to the client to decide what information it needs.
+
+  History of GraphQL
+    2012 -> Facebook was using GraphQL internally.
+    2015 -> Available as Open source.
+
+[02] Why GraphQL ? / Benefits of GraphQL
+
+  GraphQL Benefits
+    Avoids over-fetching: We only fetch the information that we require, any extra information is not fetched. E.g. Fetching only the name of the languages.
+    Avoids under-fetching: Using a single request we can get multiple information. E.g. Fetching continents, countries & languages using a single request.
+    Better mobile performance, efficiency & precision: Fetching less data in phone as its processing power is less.
+    Declarative data fetching: We control the data that we need.
+    Fetch data in Structured / Hierarchial structure format.
+    Strongly typed: Provides auto suggestions on what data is available, preventing errors.
+    Introspection / Documentation.
+    Real time capabilities called subscription. E.g. Web-socket.
+
+[03] Rest vs GraphQL
+
+  Data Fetching -
+    REST: Multiple endpoints.
+    GraphQL: Single endpoint. (Reduces number of requests)
+
+  Request Structure
+    REST: Fixed structure + HTTP methods (GET, POST, PUT, DELETE).
+    GraphQL: Flexible (Query: To fetch data. Mutation: To update data.)
+
+  Over-fetching/Under-fetching
+    REST: Both issues present.
+    GraphQL: Both issues resolved.
+
+  Response size
+    REST: Fixed response size.
+    GraphQL: Flexible size.
+
+  Versioning
+    REST: Explicit versioning i.e. Need for different version for newer version of API.
+    GraphQL: Flexible nature i.e. Same endpoint can have multiple versions.
+
+  Schema Definition
+    REST: Not well defined.
+    GraphQL: Explicit schema definition. 
+
+  Real-time capabilities
+    REST: Polling, web socket.
+    GraphQL: Out of box support. (called Subscription)
+
+  Tooling support
+    REST: Postman.
+    GraphQL: GraphQL playground.
+
+  Caching
+    REST: Relies on HTTP cache.
+    GraphQL: Possible by using client libraries on top of GraphQL. (Fine grained caching)
+
+  Client Control
+    REST: No control, client cannot decide the response.
+    GraphQL: Client can decide what information it needs.
+
+  Adoption and Community
+    REST: Widely adopted, large community support.
+    GraphQL: Rapidly growing adoption, large community support.
+
+[04] Building blocks of GraphQL
+
+  GraphQL
+    
+    Creator (Server)
+      GraphQL libraries helps to create the server & serve data to the clients.
+      e.g. Apollo Server, GraphQL.js, graphql-yoga, Mercurius, etc.
+
+    Consumer (Client)
+      To consume data from GraphQL server, we can use fetch call or make use of libraries.
+      Libraries are used to make server side connection, making requests, caching etc.
+      e.g. urql, Relay, Apollo Client, AWS amplify, etc.
+
+  GraphQL building blocks
+  
+    Schema/Types: Consider we want information about country, now country will have some interface which tells us what all information we can fetch from server. All of this information is defined in a schema. e.g. Country schema.
+
+      type Country {
+        code: String
+        name: String
+        currency: String
+        id: ID
+      }
+
+      Types -
+        Scalar (pre-defined/in-built types): ID, String, Int, Boolean.
+        Custom types (user-defined types): Continents, Country, Language.
+
+      Types are defined using SDL (GraphQL Schema Definition Language)
+
+    Query/Mutation: Methods using which we fetch/modify the data.
+      Query: Used to get the data.
+      Mutation: Used to update the data.
+      In case of GraphQL, we generally use POST method for every operation.
+
+      type Query {
+        countries(params): [Country]
+      }
+      type Mutation {
+        language(id: ID): Language
+      }
+
+    Resolver: Function used to get data from server or update data on server.
+      We define the function implementation inside a resolver.
+
+      Query: {
+        countries: (parent, args, context, info) => {
+          return //;
+        }
+      }
+
+[05] Build an app using GraphQL
+
+  
+
+[06] Calling GraphQL from client (React App)
+[07] Tools available for GraphQL
+[08] Advance part - (Federation, Data loader)
