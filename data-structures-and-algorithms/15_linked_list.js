@@ -219,22 +219,22 @@ linkedList.insert(25, 2);
 linkedList.print();
 
 console.log("Linked list after removing elements at index 0, 1, 2");
-linkedList.removeFrom(0);
-linkedList.removeFrom(1);
 linkedList.removeFrom(2);
+linkedList.removeFrom(1);
+linkedList.removeFrom(0);
 
 linkedList.print();
 
-console.log("Linked list after removing elements with values 15, 30, 60");
-linkedList.removeValue(15);
-linkedList.removeValue(30);
+console.log("Linked list after removing elements with values 40, 50, 60");
+linkedList.removeValue(40);
+linkedList.removeValue(50);
 linkedList.removeValue(60);
 
 linkedList.print();
 
 console.log("Element 10 is at index :", linkedList.search(10));
-console.log("Element 40 is at index :", linkedList.search(40));
-console.log("Element 50 is at index :", linkedList.search(50));
+console.log("Element 20 is at index :", linkedList.search(20));
+console.log("Element 30 is at index :", linkedList.search(30));
 
 linkedList.reverse();
 console.log("\nReversed linked list :");
