@@ -1,0 +1,69 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "rest-api",
+    "collectionId": "95307287-58cf-4ae5-804e-cd0e56a4a835",
+    "dateExported": "2025-02-06T10:15:09.429Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "80c2ed08-2a95-41e5-b485-2ee309a81875",
+            "colId": "95307287-58cf-4ae5-804e-cd0e56a4a835",
+            "containerId": "",
+            "name": "rest-api | PUT request",
+            "url": "http://localhost:5111/todos/5",
+            "method": "PUT",
+            "sortNum": 10000,
+            "created": "2025-02-06T10:09:34.475Z",
+            "modified": "2025-02-06T10:09:34.475Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"id\": 5,\n  \"todo\": \"task 5\",\n  \"completed\": false\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "d7e38947-35c2-4e64-bcd1-84c3104993e3",
+            "colId": "95307287-58cf-4ae5-804e-cd0e56a4a835",
+            "containerId": "",
+            "name": "rest-api | POST Request",
+            "url": "http://localhost:5111/todos",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2025-02-06T10:09:45.546Z",
+            "modified": "2025-02-06T10:09:45.546Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{ \n  \"id\": 5,\n  \"todo\": \"task 5\",\n  \"completed\": true\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "3b424aee-e227-4652-90c0-37e4221486e8",
+            "colId": "95307287-58cf-4ae5-804e-cd0e56a4a835",
+            "containerId": "",
+            "name": "rest-api | GET Request",
+            "url": "http://localhost:5111/todos",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2025-02-06T10:10:09.619Z",
+            "modified": "2025-02-06T10:10:09.619Z",
+            "headers": []
+        },
+        {
+            "_id": "a4fd47fa-b96b-4955-b25f-63cfe41f2d71",
+            "colId": "95307287-58cf-4ae5-804e-cd0e56a4a835",
+            "containerId": "",
+            "name": "rest-api | DELETE Request",
+            "url": "http://localhost:5111/todos/4",
+            "method": "DELETE",
+            "sortNum": 40000,
+            "created": "2025-02-06T10:14:04.611Z",
+            "modified": "2025-02-06T10:14:04.611Z",
+            "headers": []
+        }
+    ],
+    "ref": "AJBCkrooxziw0LVT42bGWv2dc3SjuvwsceY3xckez991fRzm8lmTjxLMv0JNYprkP0_CUX8-WqGzcePz728aXg"
+}

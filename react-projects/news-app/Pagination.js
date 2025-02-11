@@ -9,15 +9,15 @@ const getCurrentIndexData = (dataArr, head) => {
   let currentArr = [];
   let i;
   if (head > 50) {
-     i = head - 10;
+    i = head - 10;
   } else {
-    i = head
+    i = head;
   }
-  for(; i < head + 10; i++) {
+  for (; i < head + 10; i++) {
     currentArr.push(dataArr[i]);
   }
   return currentArr;
-}
+};
 
 console.log(getCurrentIndexData(dataArr, 0));
 console.log(getCurrentIndexData(dataArr, 10));
@@ -27,15 +27,15 @@ const leftClick = (head) => {
     return head - 10;
   }
   return head;
-}
+};
 
 const rightClick = (head) => {
   if (head < 50) {
-    return head + 10
+    return head + 10;
   } else {
     return head;
   }
-}
+};
 
 console.log(leftClick(20));
 console.log(leftClick(10));

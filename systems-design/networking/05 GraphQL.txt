@@ -124,7 +124,18 @@
 
 [05] Build an app using GraphQL
 
-  
+  Run the app using: npm run start
+  A GraphQL playground will open in: http://localhost:4000/
+  Now we can try running queries and fetch data.
+    query Query {
+      books {
+        id, title
+      },
+      authors {
+        id, name
+      }
+    }
+  Refer image at /resources/using-graphql-playground-to-fetch-data.png
 
 [06] Calling GraphQL from client (React App)
 [07] Tools available for GraphQL

@@ -15,7 +15,7 @@ const PORT = 5111;
 
 // Start server by listening to a port
 app.listen(PORT, () => {
-  console.log(`Server is running at port ${PORT}`);
+  console.log(`Server is running at port ${PORT}`); // This will be logged in terminal
 });
 
 // Configure a route so that, if a client is requesting on that path we will send data.
@@ -47,6 +47,7 @@ const todos = [
   { id: 1, todo: "task 1", completed: false },
   { id: 2, todo: "task 2", completed: true },
   { id: 3, todo: "task 3", completed: false },
+  { id: 4, todo: "task 4", completed: true },
 ]
 
 // READ | GET method - Retrieve data from the server.
@@ -61,7 +62,8 @@ app.post("/todos", (req, res) => {
   todos.push(newTodo);
   res.status(201).json({message: "New To-Do added !"});
 })
-// In order to make a POST request, we will use postman vs-code extension.
+// In order to make a POST request, we will use thunder-client vs-code extension.
+// To test the requests, run the server, open thunder-client vs-code extension and import rest-api.json, this file will have the data for making GET, POST, PUT and DELETE requests.
 
 // PUT - Sends entire information to the server to update the data.
 // PATCH - Sends partial information to the server to update the data.
@@ -90,6 +92,8 @@ app.delete("/todos/:id", (req, res) => {
   if (todoIndex !== -1) {
     todos.splice(todoIndex, 1);
     res.json({message: "To-To deleted successfully !"})
+  } else {
+    res.status(400).json({message: "To-Do id doesn't exist !"})
   }
 })
 

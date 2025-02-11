@@ -78,7 +78,7 @@
 
 [07] Creating a REST API for a TODO application using express.js
 
-  Create folder RestApi, inside it Run : npm init (initialize an node project with package.json)
+  Create folder rest-api, inside it Run : npm init (initialize an node project with package.json)
   Run : npm i express --save (install express package)
   Run : npm i nodemon --save (install nodemon package)
   Create server file : index.js
