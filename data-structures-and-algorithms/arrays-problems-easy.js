@@ -44,9 +44,9 @@ console.log("Second largest element :", secondLargest_OS(arr3));
 // [03] Check if the array is sorted
 
 // Brute force solution
-// Time complexity : O() | Space complexity : O()
+// Time complexity : O(n²) | Space complexity : O(1)
 function isSorted_BF(arr) {
-  // Using nested for loops to check if the current element is smaller than every other element after it.
+  // Use nested for loops to check if current element is smaller than every other element after it.
   for (let i = 0; i < arr.length; i++) {
     for (let j = 1; j < arr.length; j++) {
       if (arr[i] > arr[j]) {
@@ -59,7 +59,15 @@ function isSorted_BF(arr) {
 
 // Optimal solution
 // Time complexity : O() | Space complexity : O()
-
+function isSorted_OS(arr) {
+  // In a sorted array, the elements should be in ascending order.
+  for(let i = 1; i < arr.length; i++) {
+    if (arr[i-1] > arr[i]) {
+      return false;
+    }
+  }
+  return true;
+}
 
 // [04]
 
