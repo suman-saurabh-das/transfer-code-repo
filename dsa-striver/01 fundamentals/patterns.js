@@ -2,7 +2,8 @@
 
 /*
   ▣ Patterns: We will be using nested loops to print the patterns.
-
+  
+  ▣ Steps to solve the pattern problems -
     ◉ Using the outer loop, count the number of lines.
     ◉ Using the inner loop, focus on the columns & connect them somehow to the rows.
     ◉ Print the "*" inside the inner for loop.
@@ -20,6 +21,7 @@
   * * * * *
   * * * * *
 */
+
 function pattern1(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n; j++) {
@@ -39,6 +41,7 @@ function pattern1(n) {
   * * * *
   * * * * *
 */
+
 function pattern2(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -58,6 +61,7 @@ function pattern2(n) {
   1 2 3 4
   1 2 3 4 5
 */
+
 function pattern3(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -77,6 +81,7 @@ function pattern3(n) {
   4 4 4 4
   5 5 5 5 5
 */
+
 function pattern4(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -96,6 +101,7 @@ function pattern4(n) {
   * *
   *
 */
+
 function pattern5(n) {
   for (let i = 0; i < n; i++) {
     for (let j = n - i; j > 0; j--) {
@@ -115,6 +121,7 @@ function pattern5(n) {
   1 2
   1
 */
+
 function pattern6(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 1; j <= n - i; j++) {
@@ -134,6 +141,7 @@ function pattern6(n) {
    *******
   *********
 */
+
 function pattern7(n) {
   for (let i = 0; i < n; i++) {
     // Loop 1 to print spaces " "
@@ -158,6 +166,7 @@ function pattern7(n) {
      ***
       *
 */
+
 function pattern8(n) {
   for (let i = 0; i < n; i++) {
     // Loop 1 to print spaces " "
@@ -186,6 +195,7 @@ function pattern8(n) {
      ***
       *
 */
+
 function pattern9(n) {
   pattern7(n);
   pattern8(n);
@@ -205,6 +215,7 @@ function pattern9(n) {
   **
   *
 */
+
 function pattern10(n) {
   let i = 0;
   // Loop 1 to print stars till i <= n (increment i)
@@ -233,6 +244,7 @@ function pattern10(n) {
   0 1 0 1
   1 0 1 0 1
 */
+
 function pattern11(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -254,6 +266,7 @@ function pattern11(n) {
   1234  4321
   1234554321
 */
+
 function pattern12(n) {
   for (let i = 0; i < n; i++) {
     let j = 0;
@@ -287,6 +300,7 @@ function pattern12(n) {
   7  8  9  10
   11 12 13 14 15
 */
+
 function pattern13(n) {
   let count = 1;
   for (let i = 0; i < n; i++) {
@@ -309,6 +323,7 @@ function pattern13(n) {
   A B C D   
   A B C D E 
 */
+
 function pattern14(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -329,6 +344,7 @@ function pattern14(n) {
   A B
   A
 */
+
 function pattern15(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j < n - i; j++) {
@@ -349,6 +365,7 @@ function pattern15(n) {
   D D D D
   E E E E E
 */
+
 function pattern16(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -369,6 +386,7 @@ function pattern16(n) {
     ABCDCBA
    ABCDEDBCBA
 */
+
 function pattern17(n) {
   for (let i = 0; i < n; i++) {
     // Loop 1 to print spaces " "
@@ -399,6 +417,7 @@ function pattern17(n) {
   B C D E
   A B C D E
 */
+
 function pattern18(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 0; j <= i; j++) {
@@ -423,6 +442,7 @@ function pattern18(n) {
   ****  ****
   **********
 */
+
 function pattern19(n) {
   // Downward triangles left and right halves.
   for (let i = 0; i < n; i++) {
@@ -472,6 +492,7 @@ function pattern19(n) {
   **      **
   *        *
 */
+
 function pattern20(n) {
   for (let i = 0; i < n; i++) {
     // Printing triangles and spaces in upper half.
@@ -516,6 +537,7 @@ function pattern20(n) {
   *     *
   * * * *
 */
+
 function pattern21(n) {
   for (let i = 0; i < n; i++) {
     // Printing stars & no space for 1st and last rows.
@@ -550,6 +572,7 @@ function pattern21(n) {
   4 3 3 3 3 3 4
   4 4 4 4 4 4 4
 */
+
 function pattern22(n) {
   for (let i = 0; i < 2 * n - 1; i++) {
     for (let j = 0; j < 2 * n - 1; j++) {
