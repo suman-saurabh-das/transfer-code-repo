@@ -125,7 +125,7 @@ function pattern5(n) {
 function pattern6(n) {
   for (let i = 0; i < n; i++) {
     for (let j = 1; j <= n - i; j++) {
-      process.stdout.write((j).toString() + " ");
+      process.stdout.write(j.toString() + " ");
     }
     process.stdout.write("\n");
   }
@@ -149,7 +149,7 @@ function pattern7(n) {
       process.stdout.write(" ");
     }
     // Loop 2 to print stars "*"
-    for (let k = 0; k < (i * 2) + 1; k++) {
+    for (let k = 0; k < i * 2 + 1; k++) {
       process.stdout.write("*");
     }
     process.stdout.write("\n");
@@ -174,7 +174,7 @@ function pattern8(n) {
       process.stdout.write(" ");
     }
     // Loop 2 to print stars "*"
-    for (let k = 0; k < ((n - i - 1) * 2 + 1); k++) {
+    for (let k = 0; k < (n - i - 1) * 2 + 1; k++) {
       process.stdout.write("*");
     }
     process.stdout.write("\n");
@@ -284,7 +284,7 @@ function pattern12(n) {
     }
     // Loop 4 to print numbers.
     for (j; j > 0; j--) {
-      process.stdout.write((j).toString());
+      process.stdout.write(j.toString());
     }
     process.stdout.write("\n");
   }
@@ -378,13 +378,13 @@ function pattern16(n) {
 // pattern16(5);
 
 /*
-   Pattern 17
+  Pattern 17
 
-       A
-      ABA
-     ABCBA
-    ABCDCBA
-   ABCDEDBCBA
+      A
+     ABA
+    ABCBA
+   ABCDCBA
+  ABCDEDBCBA
 */
 
 function pattern17(n) {
@@ -394,7 +394,7 @@ function pattern17(n) {
       process.stdout.write(" ");
     }
     // Loop 2 to print characters.
-    charCode = 65;  // charCode 65 === 'A'
+    charCode = 65; // charCode 65 === 'A'
     for (let k = 0; k < 2 * i + 1; k++) {
       process.stdout.write(String.fromCharCode(charCode));
       if (k < Math.floor((2 * i + 1) / 2)) {
@@ -578,9 +578,12 @@ function pattern22(n) {
     for (let j = 0; j < 2 * n - 1; j++) {
       let top = i;
       let left = j;
-      let right = (2 * n - 2) - j;
-      let down = (2 * n - 2) - i;
-      process.stdout.write((n - Math.min(Math.min(top, down), Math.min(left, right))).toString() + " ");
+      let right = 2 * n - 2 - j;
+      let down = 2 * n - 2 - i;
+      process.stdout.write(
+        (n - Math.min(Math.min(top, down), Math.min(left, right))).toString() +
+          " "
+      );
     }
     process.stdout.write("\n");
   }
