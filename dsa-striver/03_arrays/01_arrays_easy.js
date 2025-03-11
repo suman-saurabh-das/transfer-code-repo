@@ -1,14 +1,14 @@
 /*
   Video solution link for [01-04]: https://youtu.be/37E9ckMDdTk?si=3SW7z2PiqQ-MAewM
-  Video solution link for [05-]: 
-
+  Video solution link for [05-10]: https://youtu.be/wvcQg43_V8U?si=H5Bw3f9avfU6XHEb
+  Video solution link for [10-15]: 
 */
 
 /* -------------------------------------------------------------------------------------------------
 
   [01] Find the largest element in an array.
   
-  Input: [2, 5, 1, 3, 0]  | Output: 5
+  Input: [2, 5, 1, 3, 0] | Output: 5
   Input: [8, 10, 5, 7, 9] | Output: 10
 */
 
@@ -51,7 +51,7 @@ main01();
   [02] Find second smallest & largest element in an array.
   
   Input: [1, 2, 4, 7, 7, 5] | Output: 2 5
-  Input: [1]                | Output: -1 -1
+  Input: [1] | Output: -1 -1
 */
 
 function main02() {
@@ -231,10 +231,10 @@ main04();
 
 /* -------------------------------------------------------------------------------------------------
 
-[05] Given an array of n integers, left rotate the array by one place.
+  [05] Given an array of n integers, left rotate the array by one place.
 
-Input: [1, 2, 3, 4, 5, 6] | Output: [2, 3, 4, 5, 6, 1]
-Input: [3] | Output: [3]
+  Input: [1, 2, 3, 4, 5, 6] | Output: [2, 3, 4, 5, 6, 1]
+  Input: [3] | Output: [3]
 */
 
 function main05() {
@@ -242,8 +242,8 @@ function main05() {
   // Time complexity: O(n) | Space complexity: O(1)
   function leftRotateBy1Place(arr) {
     let temp = arr[0];
-    for (let i = 0; i < arr.length - 1; i++) {
-      arr[i] = arr[i + 1];
+    for (let i = 1; i < arr.length; i++) {
+      arr[i - 1] = arr[i];
     }
     arr[arr.length - 1] = temp;
     return arr;
@@ -259,19 +259,19 @@ main05();
 
 /* -------------------------------------------------------------------------------------------------
 
-[06] Rotate array by k elements.
+  [06] Rotate array by k elements.
 
-Given an array of integers, rotating array of elements by k elements either left or right.
+  Given an array of integers, rotating array of elements by k elements either left or right.
 
-Input: [] | Output: []
-Input: [] | Output: []
+  Input: [1, 2, 3, 4, 5, 6] | Output: [3, 4, 5, 6, 1, 2]
+  Input: [3, 7, 8, 9, 10, 11] | Output: [9, 10, 11, 3, 7, 8]
 */
 
 function main06() {
-  // Optimal solution: Find number of elements to be shifted, copy these elements in temp array, shift the elements then copy elements from temp array to original array.
-  // Time complexity: O(n) | Space complexity: O(k)
-  function rotateArray(arr, k, direction) {
-    k = k % (arr.length - 1); // Number of elements to be shifted.
+  // Brute force solution: Find number of elements to be shifted, copy these elements in temp array, shift the elements then copy elements from temp array to original array.
+  // Time complexity: O(n+k) | Space complexity: O(k)
+  function rotateArray_BF(arr, k, direction) {
+    k = k % (arr.length); // Number of elements to be shifted.
     let tempArr = [];
     if (direction === "left") {
       // Copying elements to be moved to a temporary array.
@@ -283,40 +283,342 @@ function main06() {
         arr[i - k] = arr[i];
       }
       // Replacing elements from tempArr to arr.
-      for (let i = 0; i < tempArr.length; i++) {
-        arr[arr.length - k + i] = tempArr[i];
+      for (let i = arr.length - k; i < arr.length; i++) {
+        arr[i] = tempArr[i - (arr.length - k)];
       }
-    } else {
+    } else if (direction === "right") {
+      // Copying elements to be moved to a temporary array.
       for (let i = 0; i < k; i++) {
         tempArr[i] = arr[arr.length - 1 - i];
       }
+      // Shifting remaining elements to right.
       for (let i = 0; i < arr.length - k; i++) {
         arr[arr.length - 1 - i] = arr[arr.length - 1 - k - i];
       }
+      // Replacing elements from tempArr to arr.
       for (let i = 0; i < tempArr.length; i++) {
         arr[i] = tempArr[tempArr.length - 1 - i];
       }
     }
     return arr;
   }
-  const arr1 = [1, 2, 3, 4, 5, 6, 7],
+
+  // Optimal solution: Reversing array elements multiple times. (Works for both left & right shift)
+  /*
+    Step 1: Reverse array elements which needs to be shifted. e.g. [2, 1, 3, 4, 5, 6]
+    Step 2: Reverse remaining array elements. e.g. [2, 1, 6, 5, 4, 3]
+    Step 3: Reverse the entire array. e.g. [3, 4, 5, 6, 1, 2]
+  */
+  // Time complexity: O(n) | Space complexity: O(1)
+  function reverseArrUsingIndex(arr, start, end) {
+    while (start <= end) {
+      let temp = arr[start];
+      arr[start] = arr[end];
+      arr[end] = temp;
+      start++;
+      end--;
+    }
+  }
+
+  // Time complexity: O(2*n) | Space complexity: O(1)
+  function rotateArray_OS(arr, k) {
+    reverseArrUsingIndex(arr, 0, k - 1);
+    reverseArrUsingIndex(arr, k, arr.length - 1);
+    reverseArrUsingIndex(arr, 0, arr.length - 1);
+    return arr;
+  }
+
+  const arr1 = [1, 2, 3, 4, 5, 6],
     k1 = 2,
     direction1 = "left";
   const arr2 = [3, 7, 8, 9, 10, 11],
     k2 = 3,
     direction2 = "right";
-  console.log("Array after rotation :", rotateArray(arr1, k1, direction1));
-  console.log("Array after rotation :", rotateArray(arr2, k2, direction2));
+  console.log("Array after rotation :", rotateArray_BF(arr1, k1, direction1));
+  console.log("Array after rotation :", rotateArray_BF(arr2, k2, direction2));
+  process.stdout.write("\n");
+
+  const arr3 = [1, 2, 3, 4, 5, 6],
+    k3 = 2;
+  const arr4 = [3, 7, 8, 9, 10, 11],
+    k4 = 3;
+  console.log("Array after rotation :", rotateArray_OS(arr3, k3));
+  console.log("Array after rotation :", rotateArray_OS(arr4, k4));
+  process.stdout.write("\n");
 }
 main06();
 
 /* -------------------------------------------------------------------------------------------------
 
-  [07] 
+  [07] Move all zeros to the end of the array.
+
+  Input: [1, 0, 2, 3, 0, 4, 0, 1] | Output: [1, 2, 3, 4, 1, 0, 0, 0]
+  Input: [1, 2, 0, 1, 0, 4, 0] | Output: [1, 2, 1, 4, 0, 0, 0]
+*/
+
+function main07() {
+  /*
+    Brute force solution -
+    Step 1: Copy all non zero elements to a tempArr.
+    Step 2: Replace elements from tempArr in arr & replace remaining element with 0.
+  */
+  // Time complexity: O(2*n) | Space complexity: O(m)
+  // n: number of elements in array, m: number of non-zero elements.
+  function moveAllZeroToEnd_BF(arr) {
+    let tempArr = [];
+    // Storing all non-zero elements in temp array.
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > 0) {
+        tempArr.push(arr[i]);
+      }
+    }
+    // Replacing non-zero elements from tempArr in original array.
+    for (let i = 0; i < tempArr.length; i++) {
+      arr[i] = tempArr[i];
+    }
+    // Replacing remaining elements with 0.
+    for (let i = tempArr.length; i < arr.length; i++) {
+      arr[i] = 0;
+    }
+    return arr;
+  }
+
+  // Optimal solution: Using 2 pointers & swapping.
+  // Time complexity: O(n) | Space complexity: O(1)
+  function moveAllZeroToEnd_OS(arr) {
+    let j = -1;
+    for (let i = 0; i < arr.length; i++) {
+      // Finding the first occurrence of a zero.
+      if (arr[i] === 0 && j === -1) {
+        j = i;
+      }
+      // Swapping.
+      if (arr[i] > 0 && j !== -1) {
+        let temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+        j++
+      }
+    }
+    return arr;
+  }
+
+  const arr1 = [1, 0, 2, 3, 0, 4, 0, 1], arr2 = [1, 2, 0, 1, 0, 4, 0];
+  console.log("Array after moving zeros :", moveAllZeroToEnd_BF(arr1));
+  console.log("Array after moving zeros :", moveAllZeroToEnd_BF(arr2));
+  process.stdout.write("\n");
+
+  const arr3 = [1, 0, 2, 3, 0, 4, 0, 1], arr4 = [1, 2, 0, 1, 0, 4, 0];
+  console.log("Array after moving zeros :", moveAllZeroToEnd_OS(arr3));
+  console.log("Array after moving zeros :", moveAllZeroToEnd_OS(arr4));
+  process.stdout.write("\n");
+}
+main07();
+
+/* -------------------------------------------------------------------------------------------------
+
+  [08] Linear search.
+
+  Given an array, and an element num, find if num is present in the given array or not.
+  If present return the index of the element or return -1.
+
+  Input: [1, 2, 3, 4, 5] | Output: 2
+  Input: [5, 4, 3, 2, 1] | Output: -1
+*/
+
+function main08() {
+  // Optimal solution: Search for element using linear search.
+  // Time complexity: O(n) | Space complexity: O(1)
+  function linearSearch(arr, num) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === num) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  const arr1 = [1, 2, 3, 4, 5], num1 = 3;
+  const arr2 = [5, 4, 3, 2, 1], num2 = 7;
+  console.log("Element found at index :", linearSearch(arr1, num1));
+  console.log("Element found at index :", linearSearch(arr2, num2));
+  process.stdout.write("\n");
+}
+main08();
+
+/* -------------------------------------------------------------------------------------------------
+
+  [09] Union of two sorted arrays.
+
+  Input: [1, 2, 3, 4, 5], [2, 3, 4, 4, 5]
+  Output: [1, 2, 3, 4, 5]
+  
+  Input: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], [2, 3, 4, 4, 5, 11, 12]
+  Output: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+  */
+
+function main09() {
+  // Brute force solution: Using set.
+  // Time complexity: O(n1+n2) | Space complexity: O(n1+n2)
+  function unionOfTwoSortedArr_BF(arr1, arr2) {
+    const uniqueNumSet = new Set();
+    for (let i = 0; i < arr1.length; i++) {
+      uniqueNumSet.add(arr1[i]);
+    }
+    for (let i = 0; i < arr2.length; i++) {
+      uniqueNumSet.add(arr2[i]);
+    }
+    return Array.from(uniqueNumSet);
+  }
+
+  // Optimal solution: Using 2 pointers.
+  // Time complexity: O(n1+n2) | Space complexity: O(n1+n2)
+  function unionOfTwoSortedArr_OS(arr1, arr2) {
+    let i = 0, j = 0, unionArr = [];
+    while (i < arr1.length && j < arr2.length) {
+      if (arr1[i] < arr2[j]) {
+        // If unionArr already has the element in it, then do not insert, else insert.
+        if (unionArr[unionArr.length - 1] === arr1[i]) {
+          i++;
+        } else {
+          unionArr.push(arr1[i]);
+          i++;
+        }
+      }
+      else {
+        if (unionArr[unionArr.length - 1] === arr2[i]) {
+          j++;
+        } else {
+          unionArr.push(arr2[j]);
+          j++;
+        }
+      }
+    }
+    // Adding remaining elements when one of the arrays is exhausted.
+    while (i < arr1.length) {
+      if (unionArr[unionArr.length - 1] === arr1[i]) {
+        i++;
+      } else {
+        unionArr.push(arr1[i]);
+        i++;
+      }
+    }
+    while (j < arr2.length) {
+      if (unionArr[unionArr.length - 1] === arr2[i]) {
+        j++;
+      } else {
+        unionArr.push(arr2[j]);
+        j++;
+      }
+    }
+    return unionArr;
+  }
+
+  const arr1 = [1, 2, 3, 4, 5], arr2 = [2, 3, 4, 4, 5];
+  const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], arr4 = [2, 3, 4, 4, 5, 11, 12];
+  console.log("Union of sorted arrays :", unionOfTwoSortedArr_BF(arr1, arr2));
+  console.log("Union of sorted arrays :", unionOfTwoSortedArr_BF(arr3, arr4));
+  process.stdout.write("\n");
+
+  const arr5 = [1, 2, 3, 4, 5], arr6 = [2, 3, 4, 4, 5];
+  const arr7 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], arr8 = [2, 3, 4, 4, 5, 11, 12];
+  console.log("Union of sorted arrays :", unionOfTwoSortedArr_OS(arr5, arr6));
+  console.log("Union of sorted arrays :", unionOfTwoSortedArr_OS(arr7, arr8));
+  process.stdout.write("\n");
+}
+main09();
+
+/* -------------------------------------------------------------------------------------------------
+
+  [10] Intersection of two sorted arrays.
+
+  Input: [1, 2, 3, 4, 5], [2, 3, 4, 4, 5] | Output: [2, 3, 4, 5]
+  Input: [1, 2, 2, 3, 3, 4, 5, 6], [2, 3, 3, 5, 6, 6, 7] | Output: [2, 3, 3, 5, 6]
+*/
+
+function main10() {
+  // Brute force solution: Using nested loops.
+  // Time complexity: O(n1*n2) | Space complexity: O(max(n1,n2))
+  function intersectionOfTwoSortedArr_BF(arr1, arr2) {
+    // Create a visited array to keep track of whether an element is already paired.
+    let visitedArr = new Array(arr2.length).fill(false), intersectionArr = [];
+    for (let i = 0; i < arr1.length; i++) {
+      for (let j = 0; j < arr2.length; j++) {
+        if (arr1[i] === arr2[j] && visitedArr[j] === false) {
+          intersectionArr.push(arr2[j]);
+          visitedArr[j] = true;
+          break;
+        }
+        if (arr2[j] > arr1[i]) {
+          break;
+        }
+      }
+    }
+    return intersectionArr;
+  }
+
+  // Optimal solution: Using 2 pointers.
+  // Time complexity: O(n1+n2) | Space complexity: O(max(n1,n2))
+  function intersectionOfTwoSortedArr_OS(arr1, arr2) {
+    let i = 0, j = 0, intersectionArr = [];
+    while (i < arr1.length && j < arr2.length) {
+      if (arr1[i] < arr2[j]) {
+        i++;
+      } else if (arr1[i] > arr2[j]) {
+        j++;
+      } else {
+        intersectionArr.push(arr1[i]);
+        i++;
+        j++;
+      }
+    }
+    return intersectionArr;
+  }
+  
+  const arr1 = [1, 2, 3, 4, 5], arr2 = [2, 3, 4, 4, 5];
+  const arr3 = [1, 2, 2, 3, 3, 4, 5, 6], arr4 = [2, 3, 3, 5, 6, 6, 7];
+  console.log("Intersection of sorted arrays :", intersectionOfTwoSortedArr_BF(arr1, arr2));
+  console.log("Intersection of sorted arrays :", intersectionOfTwoSortedArr_BF(arr3, arr4));
+  process.stdout.write("\n");
+
+  const arr5 = [1, 2, 3, 4, 5], arr6 = [2, 3, 4, 4, 5];
+  const arr7 = [1, 2, 2, 3, 3, 4, 5, 6], arr8 = [2, 3, 3, 5, 6, 6, 7];
+  console.log("Intersection of sorted arrays :", intersectionOfTwoSortedArr_OS(arr5, arr6));
+  console.log("Intersection of sorted arrays :", intersectionOfTwoSortedArr_OS(arr7, arr8));
+  process.stdout.write("\n");
+}
+main10();
+
+/* -------------------------------------------------------------------------------------------------
+
+  [11]
 
   Input: [] | Output: []
   Input: [] | Output: []
 */
 
-// Brute force solution:
-// Optimal solution:
+function main11() {
+  // Brute force solution:
+  // Time complexity: O() | Space complexity: O()
+  // Optimal solution:
+  // Time complexity: O() | Space complexity: O()
+}
+main11();
+
+/* -------------------------------------------------------------------------------------------------
+
+[12]
+
+Input: [] | Output: []
+  Input: [] | Output: []
+*/
+
+function main12() {
+  // Brute force solution:
+  // Time complexity: O() | Space complexity: O()
+  // Optimal solution:
+  // Time complexity: O() | Space complexity: O()
+}
+main12();
+
+/* -------------------------------------------------------------------------------------------- */
