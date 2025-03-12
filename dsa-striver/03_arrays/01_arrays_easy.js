@@ -34,12 +34,14 @@ function main01() {
 
   const arr1 = [2, 5, 1, 3, 0],
     arr2 = [8, 10, 5, 7, 9];
+
   console.log("Largest element is :", findLargest_BF(arr1));
   console.log("Largest element is :", findLargest_BF(arr2));
   process.stdout.write("\n");
 
   const arr3 = [2, 5, 1, 3, 0],
     arr4 = [8, 10, 5, 7, 9];
+
   console.log("Largest element is :", findLargest_OS(arr3));
   console.log("Largest element is :", findLargest_OS(arr4));
   process.stdout.write("\n");
@@ -117,12 +119,14 @@ function main02() {
 
   const arr1 = [1, 2, 4, 7, 7, 5],
     arr2 = [1];
+
   findSecondSmallestSecondLargest_BF(arr1);
   findSecondSmallestSecondLargest_BF(arr2);
   process.stdout.write("\n");
 
   const arr3 = [1, 2, 4, 7, 7, 5],
     arr4 = [1];
+
   findSecondSmallestSecondLargest_OS(arr3);
   findSecondSmallestSecondLargest_OS(arr4);
   process.stdout.write("\n");
@@ -164,14 +168,13 @@ function main03() {
 
   const arr1 = [1, 2, 3, 4, 5],
     arr2 = [5, 4, 6, 7, 8];
+
   console.log("Array is sorted :", isSorted_BF(arr1));
   console.log("Array is sorted :", isSorted_BF(arr2));
   process.stdout.write("\n");
 
-  const arr3 = [1, 2, 3, 4, 5],
-    arr4 = [5, 4, 6, 7, 8];
-  console.log("Array is sorted :", isSorted_OS(arr3));
-  console.log("Array is sorted :", isSorted_OS(arr4));
+  console.log("Array is sorted :", isSorted_OS(arr1));
+  console.log("Array is sorted :", isSorted_OS(arr2));
   process.stdout.write("\n");
 }
 main03();
@@ -217,12 +220,14 @@ function main04() {
 
   const arr1 = [1, 1, 2, 2, 2, 3, 3],
     arr2 = [1, 1, 1, 2, 2, 3, 3, 3, 3, 4, 4];
+
   console.log("Array after removing duplicates :", removeDuplicates_BF(arr1));
   console.log("Array after removing duplicates :", removeDuplicates_BF(arr2));
   process.stdout.write("\n");
 
   const arr3 = [1, 1, 2, 2, 2, 3, 3],
     arr4 = [1, 1, 1, 2, 2, 3, 3, 3, 3, 4, 4];
+
   console.log("Array after removing duplicates :", removeDuplicates_OS(arr3));
   console.log("Array after removing duplicates :", removeDuplicates_OS(arr4));
   process.stdout.write("\n");
@@ -251,6 +256,7 @@ function main05() {
 
   const arr1 = [1, 2, 3, 4, 5, 6],
     arr2 = [3];
+
   console.log("Array after rotating by 1 place :", leftRotateBy1Place(arr1));
   console.log("Array after rotating by 1 place :", leftRotateBy1Place(arr2));
   process.stdout.write("\n");
@@ -334,6 +340,7 @@ function main06() {
   const arr2 = [3, 7, 8, 9, 10, 11],
     k2 = 3,
     direction2 = "right";
+
   console.log("Array after rotation :", rotateArray_BF(arr1, k1, direction1));
   console.log("Array after rotation :", rotateArray_BF(arr2, k2, direction2));
   process.stdout.write("\n");
@@ -342,6 +349,7 @@ function main06() {
     k3 = 2;
   const arr4 = [3, 7, 8, 9, 10, 11],
     k4 = 3;
+
   console.log("Array after rotation :", rotateArray_OS(arr3, k3));
   console.log("Array after rotation :", rotateArray_OS(arr4, k4));
   process.stdout.write("\n");
@@ -405,12 +413,14 @@ function main07() {
 
   const arr1 = [1, 0, 2, 3, 0, 4, 0, 1],
     arr2 = [1, 2, 0, 1, 0, 4, 0];
+
   console.log("Array after moving zeros :", moveAllZeroToEnd_BF(arr1));
   console.log("Array after moving zeros :", moveAllZeroToEnd_BF(arr2));
   process.stdout.write("\n");
 
   const arr3 = [1, 0, 2, 3, 0, 4, 0, 1],
     arr4 = [1, 2, 0, 1, 0, 4, 0];
+
   console.log("Array after moving zeros :", moveAllZeroToEnd_OS(arr3));
   console.log("Array after moving zeros :", moveAllZeroToEnd_OS(arr4));
   process.stdout.write("\n");
@@ -444,6 +454,7 @@ function main08() {
     num1 = 3;
   const arr2 = [5, 4, 3, 2, 1],
     num2 = 7;
+
   console.log("Element found at index :", linearSearch(arr1, num1));
   console.log("Element found at index :", linearSearch(arr2, num2));
   process.stdout.write("\n");
@@ -523,16 +534,13 @@ function main09() {
     arr2 = [2, 3, 4, 4, 5];
   const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
     arr4 = [2, 3, 4, 4, 5, 11, 12];
+
   console.log("Union of sorted arrays :", unionOfTwoSortedArr_BF(arr1, arr2));
   console.log("Union of sorted arrays :", unionOfTwoSortedArr_BF(arr3, arr4));
   process.stdout.write("\n");
 
-  const arr5 = [1, 2, 3, 4, 5],
-    arr6 = [2, 3, 4, 4, 5];
-  const arr7 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-    arr8 = [2, 3, 4, 4, 5, 11, 12];
-  console.log("Union of sorted arrays :", unionOfTwoSortedArr_OS(arr5, arr6));
-  console.log("Union of sorted arrays :", unionOfTwoSortedArr_OS(arr7, arr8));
+  console.log("Union of sorted arrays :", unionOfTwoSortedArr_OS(arr1, arr2));
+  console.log("Union of sorted arrays :", unionOfTwoSortedArr_OS(arr3, arr4));
   process.stdout.write("\n");
 }
 main09();
@@ -591,6 +599,7 @@ function main10() {
     arr2 = [2, 3, 4, 4, 5];
   const arr3 = [1, 2, 2, 3, 3, 4, 5, 6],
     arr4 = [2, 3, 3, 5, 6, 6, 7];
+
   console.log(
     "Intersection of sorted arrays :",
     intersectionOfTwoSortedArr_BF(arr1, arr2)
@@ -601,17 +610,13 @@ function main10() {
   );
   process.stdout.write("\n");
 
-  const arr5 = [1, 2, 3, 4, 5],
-    arr6 = [2, 3, 4, 4, 5];
-  const arr7 = [1, 2, 2, 3, 3, 4, 5, 6],
-    arr8 = [2, 3, 3, 5, 6, 6, 7];
   console.log(
     "Intersection of sorted arrays :",
-    intersectionOfTwoSortedArr_OS(arr5, arr6)
+    intersectionOfTwoSortedArr_OS(arr1, arr2)
   );
   console.log(
     "Intersection of sorted arrays :",
-    intersectionOfTwoSortedArr_OS(arr7, arr8)
+    intersectionOfTwoSortedArr_OS(arr3, arr4)
   );
   process.stdout.write("\n");
 }
@@ -745,6 +750,7 @@ function main12() {
 
   const arr1 = [1, 1, 0, 1, 1, 1],
     arr2 = [1, 0, 1, 1, 0, 1];
+
   console.log("Maximum consecutive 1's :", finMaxConsecutiveOnes(arr1));
   console.log("Maximum consecutive 1's :", finMaxConsecutiveOnes(arr2));
   process.stdout.write("\n");
@@ -755,7 +761,7 @@ main12();
 
   [13] Find the number that appears once, and the other numbers twice.
 
-   Given a non-empty array of integers arr, every element appears twice except for one. Find that single one.
+  Given a non-empty array of integers arr, every element appears twice except for one. Find that single one.
 
   Input: [2, 2, 1] | Output: 1
   Input: [4, 1, 2, 1, 2] | Output: 4
@@ -812,6 +818,7 @@ function main13() {
 
   const arr1 = [2, 2, 1],
     arr2 = [4, 1, 2, 1, 2];
+
   console.log("Number appearing once :", findSingleNumber_BF(arr1));
   console.log("Number appearing once :", findSingleNumber_BF(arr2));
   process.stdout.write("\n");
