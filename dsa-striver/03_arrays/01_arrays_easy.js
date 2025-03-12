@@ -271,7 +271,7 @@ function main06() {
   // Brute force solution: Find number of elements to be shifted, copy these elements in temp array, shift the elements then copy elements from temp array to original array.
   // Time complexity: O(n+k) | Space complexity: O(k)
   function rotateArray_BF(arr, k, direction) {
-    k = k % (arr.length); // Number of elements to be shifted.
+    k = k % arr.length; // Number of elements to be shifted.
     let tempArr = [];
     if (direction === "left") {
       // Copying elements to be moved to a temporary array.
@@ -397,18 +397,20 @@ function main07() {
         let temp = arr[i];
         arr[i] = arr[j];
         arr[j] = temp;
-        j++
+        j++;
       }
     }
     return arr;
   }
 
-  const arr1 = [1, 0, 2, 3, 0, 4, 0, 1], arr2 = [1, 2, 0, 1, 0, 4, 0];
+  const arr1 = [1, 0, 2, 3, 0, 4, 0, 1],
+    arr2 = [1, 2, 0, 1, 0, 4, 0];
   console.log("Array after moving zeros :", moveAllZeroToEnd_BF(arr1));
   console.log("Array after moving zeros :", moveAllZeroToEnd_BF(arr2));
   process.stdout.write("\n");
 
-  const arr3 = [1, 0, 2, 3, 0, 4, 0, 1], arr4 = [1, 2, 0, 1, 0, 4, 0];
+  const arr3 = [1, 0, 2, 3, 0, 4, 0, 1],
+    arr4 = [1, 2, 0, 1, 0, 4, 0];
   console.log("Array after moving zeros :", moveAllZeroToEnd_OS(arr3));
   console.log("Array after moving zeros :", moveAllZeroToEnd_OS(arr4));
   process.stdout.write("\n");
@@ -438,8 +440,10 @@ function main08() {
     return -1;
   }
 
-  const arr1 = [1, 2, 3, 4, 5], num1 = 3;
-  const arr2 = [5, 4, 3, 2, 1], num2 = 7;
+  const arr1 = [1, 2, 3, 4, 5],
+    num1 = 3;
+  const arr2 = [5, 4, 3, 2, 1],
+    num2 = 7;
   console.log("Element found at index :", linearSearch(arr1, num1));
   console.log("Element found at index :", linearSearch(arr2, num2));
   process.stdout.write("\n");
@@ -474,7 +478,9 @@ function main09() {
   // Optimal solution: Using 2 pointers.
   // Time complexity: O(n1+n2) | Space complexity: O(n1+n2)
   function unionOfTwoSortedArr_OS(arr1, arr2) {
-    let i = 0, j = 0, unionArr = [];
+    let i = 0,
+      j = 0,
+      unionArr = [];
     while (i < arr1.length && j < arr2.length) {
       if (arr1[i] < arr2[j]) {
         // If unionArr already has the element in it, then do not insert, else insert.
@@ -484,8 +490,7 @@ function main09() {
           unionArr.push(arr1[i]);
           i++;
         }
-      }
-      else {
+      } else {
         if (unionArr[unionArr.length - 1] === arr2[i]) {
           j++;
         } else {
@@ -514,14 +519,18 @@ function main09() {
     return unionArr;
   }
 
-  const arr1 = [1, 2, 3, 4, 5], arr2 = [2, 3, 4, 4, 5];
-  const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], arr4 = [2, 3, 4, 4, 5, 11, 12];
+  const arr1 = [1, 2, 3, 4, 5],
+    arr2 = [2, 3, 4, 4, 5];
+  const arr3 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    arr4 = [2, 3, 4, 4, 5, 11, 12];
   console.log("Union of sorted arrays :", unionOfTwoSortedArr_BF(arr1, arr2));
   console.log("Union of sorted arrays :", unionOfTwoSortedArr_BF(arr3, arr4));
   process.stdout.write("\n");
 
-  const arr5 = [1, 2, 3, 4, 5], arr6 = [2, 3, 4, 4, 5];
-  const arr7 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], arr8 = [2, 3, 4, 4, 5, 11, 12];
+  const arr5 = [1, 2, 3, 4, 5],
+    arr6 = [2, 3, 4, 4, 5];
+  const arr7 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    arr8 = [2, 3, 4, 4, 5, 11, 12];
   console.log("Union of sorted arrays :", unionOfTwoSortedArr_OS(arr5, arr6));
   console.log("Union of sorted arrays :", unionOfTwoSortedArr_OS(arr7, arr8));
   process.stdout.write("\n");
@@ -541,7 +550,8 @@ function main10() {
   // Time complexity: O(n1*n2) | Space complexity: O(max(n1,n2))
   function intersectionOfTwoSortedArr_BF(arr1, arr2) {
     // Create a visited array to keep track of whether an element is already paired.
-    let visitedArr = new Array(arr2.length).fill(false), intersectionArr = [];
+    let visitedArr = new Array(arr2.length).fill(false),
+      intersectionArr = [];
     for (let i = 0; i < arr1.length; i++) {
       for (let j = 0; j < arr2.length; j++) {
         if (arr1[i] === arr2[j] && visitedArr[j] === false) {
@@ -560,7 +570,9 @@ function main10() {
   // Optimal solution: Using 2 pointers.
   // Time complexity: O(n1+n2) | Space complexity: O(max(n1,n2))
   function intersectionOfTwoSortedArr_OS(arr1, arr2) {
-    let i = 0, j = 0, intersectionArr = [];
+    let i = 0,
+      j = 0,
+      intersectionArr = [];
     while (i < arr1.length && j < arr2.length) {
       if (arr1[i] < arr2[j]) {
         i++;
@@ -574,51 +586,244 @@ function main10() {
     }
     return intersectionArr;
   }
-  
-  const arr1 = [1, 2, 3, 4, 5], arr2 = [2, 3, 4, 4, 5];
-  const arr3 = [1, 2, 2, 3, 3, 4, 5, 6], arr4 = [2, 3, 3, 5, 6, 6, 7];
-  console.log("Intersection of sorted arrays :", intersectionOfTwoSortedArr_BF(arr1, arr2));
-  console.log("Intersection of sorted arrays :", intersectionOfTwoSortedArr_BF(arr3, arr4));
+
+  const arr1 = [1, 2, 3, 4, 5],
+    arr2 = [2, 3, 4, 4, 5];
+  const arr3 = [1, 2, 2, 3, 3, 4, 5, 6],
+    arr4 = [2, 3, 3, 5, 6, 6, 7];
+  console.log(
+    "Intersection of sorted arrays :",
+    intersectionOfTwoSortedArr_BF(arr1, arr2)
+  );
+  console.log(
+    "Intersection of sorted arrays :",
+    intersectionOfTwoSortedArr_BF(arr3, arr4)
+  );
   process.stdout.write("\n");
 
-  const arr5 = [1, 2, 3, 4, 5], arr6 = [2, 3, 4, 4, 5];
-  const arr7 = [1, 2, 2, 3, 3, 4, 5, 6], arr8 = [2, 3, 3, 5, 6, 6, 7];
-  console.log("Intersection of sorted arrays :", intersectionOfTwoSortedArr_OS(arr5, arr6));
-  console.log("Intersection of sorted arrays :", intersectionOfTwoSortedArr_OS(arr7, arr8));
+  const arr5 = [1, 2, 3, 4, 5],
+    arr6 = [2, 3, 4, 4, 5];
+  const arr7 = [1, 2, 2, 3, 3, 4, 5, 6],
+    arr8 = [2, 3, 3, 5, 6, 6, 7];
+  console.log(
+    "Intersection of sorted arrays :",
+    intersectionOfTwoSortedArr_OS(arr5, arr6)
+  );
+  console.log(
+    "Intersection of sorted arrays :",
+    intersectionOfTwoSortedArr_OS(arr7, arr8)
+  );
   process.stdout.write("\n");
 }
 main10();
 
 /* -------------------------------------------------------------------------------------------------
 
-  [11]
+  [11] Find the missing number in an array.
 
-  Input: [] | Output: []
-  Input: [] | Output: []
+  Given an integer N and an array of size N-1 containing N-1 numbers between 1 to N. Find the number(between 1 to N), that is not present in the given array.
+
+  Input: [1, 2, 4, 5] | Output: 3
+  Input: [2, 3] | Output: 1
 */
 
 function main11() {
-  // Brute force solution:
-  // Time complexity: O() | Space complexity: O()
-  // Optimal solution:
-  // Time complexity: O() | Space complexity: O()
+  // Brute force solution: Using nested loops.
+  // Time complexity: O(n²) | Space complexity: O(1)
+  function findMissingNumber_BF(arr) {
+    for (let i = 1; i <= arr.length + 1; i++) {
+      isFound = false;
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j] === i) {
+          isFound = true;
+          break;
+        }
+      }
+      if (!isFound) {
+        return i;
+      }
+    }
+  }
+
+  // Better solution: Hashing.
+  // Time complexity: O(2*n) | Space complexity: O(n)
+  function findMissingNumber_BS(arr) {
+    // Create a hash array of length (arr.length + 1) with all 0.
+    let hashArray = new Array(arr.length + 1).fill(0);
+    // For every element that exists in array, set the value as 1.
+    for (let i = 0; i < arr.length; i++) {
+      hashArray[arr[i]] = 1;
+    }
+    // console.log(hashArray);
+    // Loop through hash array to find the missing element. (value as 0)
+    for (let i = 1; i <= hashArray.length; i++) {
+      if (hashArray[i] === 0) {
+        return i;
+      }
+    }
+    // If the last number is missing.
+    return hashArray.length;
+  }
+
+  // Optimal solution 1: Using sum.
+  // Time complexity: O(n) | Space complexity: O(1)
+  function findMissingNumber_OS1(arr) {
+    let sum = 0,
+      n = arr.length + 1;
+    for (let i = 0; i < arr.length; i++) {
+      sum = sum + arr[i];
+    }
+    const sumOfN = Math.floor((n * (n + 1)) / 2);
+    // Missing number = sum of n natural numbers - sum of all numbers in array
+    return sumOfN - sum;
+  }
+
+  // Optimal solution 2: Using XOR.
+  // Property 1: a ^ 0 = a | Property 2: a ^ a = 0
+  // Time complexity: O(n) | Space complexity: O(1)
+  function findMissingNumber_OS2(arr) {
+    let xorOfN = 0,
+      xorOfArr = 0;
+    for (let i = 0; i < arr.length; i++) {
+      xorOfN = xorOfN ^ (i + 1);
+      xorOfArr = xorOfArr ^ arr[i];
+    }
+    // XOR with last number i.e. N
+    xorOfN = xorOfN ^ (arr.length + 1);
+    return xorOfN ^ xorOfArr; // Missing number
+  }
+
+  const arr1 = [1, 2, 4, 5],
+    arr2 = [2, 3];
+
+  console.log("Missing number is :", findMissingNumber_BF(arr1));
+  console.log("Missing number is :", findMissingNumber_BF(arr2));
+  process.stdout.write("\n");
+
+  console.log("Missing number is :", findMissingNumber_BS(arr1));
+  console.log("Missing number is :", findMissingNumber_BS(arr2));
+  process.stdout.write("\n");
+
+  console.log("Missing number is :", findMissingNumber_OS1(arr1));
+  console.log("Missing number is :", findMissingNumber_OS1(arr2));
+  process.stdout.write("\n");
+
+  console.log("Missing number is :", findMissingNumber_OS2(arr1));
+  console.log("Missing number is :", findMissingNumber_OS2(arr2));
+  process.stdout.write("\n");
 }
 main11();
 
 /* -------------------------------------------------------------------------------------------------
 
-[12]
+  [12] Count maximum consecutive one's in the array.
 
-Input: [] | Output: []
-  Input: [] | Output: []
+  Given an array containing only 1 and 0 return the count of maximum consecutive ones in the array.
+
+  Input: [1, 1, 0, 1, 1, 1] | Output: 3
+  Input: [1, 0, 1, 1, 0, 1] | Output: 2
 */
 
 function main12() {
-  // Brute force solution:
-  // Time complexity: O() | Space complexity: O()
-  // Optimal solution:
-  // Time complexity: O() | Space complexity: O()
+  // Optimal solution: Iterate over the array & keep track of current & maximum consecutive 1's.
+  // Time complexity: O(n) | Space complexity: O(1)
+  function finMaxConsecutiveOnes(arr) {
+    let current = 0,
+      max = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === 1) {
+        current++;
+        if (current > max) {
+          max = current;
+        }
+      } else {
+        current = 0;
+      }
+    }
+    return max;
+  }
+
+  const arr1 = [1, 1, 0, 1, 1, 1],
+    arr2 = [1, 0, 1, 1, 0, 1];
+  console.log("Maximum consecutive 1's :", finMaxConsecutiveOnes(arr1));
+  console.log("Maximum consecutive 1's :", finMaxConsecutiveOnes(arr2));
+  process.stdout.write("\n");
 }
 main12();
+
+/* -------------------------------------------------------------------------------------------------
+
+  [13] Find the number that appears once, and the other numbers twice.
+
+   Given a non-empty array of integers arr, every element appears twice except for one. Find that single one.
+
+  Input: [2, 2, 1] | Output: 1
+  Input: [4, 1, 2, 1, 2] | Output: 4
+*/
+
+function main13() {
+  // Brute force solution: Using nested loops.
+  // Time complexity: O(n²) | Space complexity: O(1)
+  function findSingleNumber_BF(arr) {
+    for (let i = 1; i <= arr.length; i++) {
+      let count = 0;
+      for (let j = 0; j < arr.length; j++) {
+        if (arr[j] === i) {
+          count++;
+        }
+        if (count === 2) {
+          break;
+        }
+      }
+      if (count === 1) {
+        return i;
+      }
+    }
+  }
+
+  // Better solution: Hashing using maps.
+  // Time complexity: O(2*n) | Space complexity: O(n/2)
+  function findSingleNumber_BS(arr) {
+    const hashMap = new Map();
+    for (let i = 0; i < arr.length; i++) {
+      if (!hashMap.has(arr[i])) {
+        hashMap.set(arr[i], 1);
+      } else {
+        let count = hashMap.get(arr[i]);
+        hashMap.set(arr[i], count + 1);
+      }
+    }
+    for (let [key, value] of hashMap) {
+      if (value === 1) {
+        return key;
+      }
+    }
+  }
+
+  // Optimal solution: Using XOR.
+  // Time complexity: O(n) | Space complexity: O(1)
+  function findSingleNumber_OS(arr) {
+    let xor = 0;
+    for (let i = 0; i < arr.length; i++) {
+      xor = xor ^ arr[i];
+    }
+    return xor;
+  }
+
+  const arr1 = [2, 2, 1],
+    arr2 = [4, 1, 2, 1, 2];
+  console.log("Number appearing once :", findSingleNumber_BF(arr1));
+  console.log("Number appearing once :", findSingleNumber_BF(arr2));
+  process.stdout.write("\n");
+
+  console.log("Number appearing once :", findSingleNumber_BS(arr1));
+  console.log("Number appearing once :", findSingleNumber_BS(arr2));
+  process.stdout.write("\n");
+
+  console.log("Number appearing once :", findSingleNumber_OS(arr1));
+  console.log("Number appearing once :", findSingleNumber_OS(arr2));
+  process.stdout.write("\n");
+}
+main13();
 
 /* -------------------------------------------------------------------------------------------- */
