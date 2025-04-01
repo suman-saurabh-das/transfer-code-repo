@@ -1,0 +1,18 @@
+[01] gRPC
+
+  It is developed by google and is open source.
+  gRPC works on RPC (Remote procedure call, which enables us to call functions defined in remote server from the client, client can be another server, it doesn't have to be a browser).
+  It is used to have effective communication between 2 systems.
+  It can be used for load balancing, tracing, health checking, authenticating, etc.
+
+[02] RPC
+
+  
+
+[03] ProtoBuf
+
+[04] HandsOn
+
+[05] Rest Vs gRPC
+
+[06] Pros/Cons of gRPC
