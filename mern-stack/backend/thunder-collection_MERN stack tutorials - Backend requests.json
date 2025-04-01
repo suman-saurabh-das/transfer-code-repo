@@ -2,7 +2,7 @@
     "clientName": "Thunder Client",
     "collectionName": "MERN stack tutorials - Backend requests",
     "collectionId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
-    "dateExported": "2025-04-01T18:42:52.334Z",
+    "dateExported": "2025-04-01T20:08:10.493Z",
     "version": "1.2",
     "folders": [],
     "requests": [
@@ -10,14 +10,74 @@
             "_id": "1b3fc9a9-0034-4292-ac8f-c43c0e0ea90e",
             "colId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
             "containerId": "",
-            "name": "GET - localhost:4000",
-            "url": "http://localhost:4000/dd",
+            "name": "localhost:4000",
+            "url": "http://localhost:4000/",
             "method": "GET",
             "sortNum": 10000,
             "created": "2025-04-01T18:20:43.196Z",
-            "modified": "2025-04-01T18:26:00.149Z",
+            "modified": "2025-04-01T20:03:56.001Z",
+            "headers": []
+        },
+        {
+            "_id": "d011b3cc-ef16-4532-8931-30dea1bc1510",
+            "colId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
+            "containerId": "",
+            "name": "localhost:4000/api/workouts/",
+            "url": "http://localhost:4000/api/workouts/",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2025-04-01T20:04:21.174Z",
+            "modified": "2025-04-01T20:04:54.835Z",
+            "headers": []
+        },
+        {
+            "_id": "e709c43e-87eb-4e0c-9398-04b2f81583ef",
+            "colId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
+            "containerId": "",
+            "name": "localhost:4000/api/workouts/1",
+            "url": "http://localhost:4000/api/workouts/123",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2025-04-01T20:04:33.564Z",
+            "modified": "2025-04-01T20:05:34.157Z",
+            "headers": []
+        },
+        {
+            "_id": "66f1e62b-01a0-4624-9db5-a50009764b69",
+            "colId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
+            "containerId": "",
+            "name": "http://localhost:4000/api/workouts/",
+            "url": "http://localhost:4000/api/workouts/",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2025-04-01T20:06:04.860Z",
+            "modified": "2025-04-01T20:06:17.525Z",
+            "headers": []
+        },
+        {
+            "_id": "05619eb5-03e1-434b-8a33-55a477cc6932",
+            "colId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
+            "containerId": "",
+            "name": "http://localhost:4000/api/workouts/123",
+            "url": "http://localhost:4000/api/workouts/123",
+            "method": "DELETE",
+            "sortNum": 60000,
+            "created": "2025-04-01T20:06:24.666Z",
+            "modified": "2025-04-01T20:06:40.021Z",
+            "headers": []
+        },
+        {
+            "_id": "2717446f-218e-4af6-975e-cd7441e809e3",
+            "colId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
+            "containerId": "",
+            "name": "http://localhost:4000/api/workouts/123",
+            "url": "http://localhost:4000/api/workouts/123",
+            "method": "PATCH",
+            "sortNum": 70000,
+            "created": "2025-04-01T20:06:51.207Z",
+            "modified": "2025-04-01T20:07:11.997Z",
             "headers": []
         }
     ],
-    "ref": "m2d0Av9zCWKOIdhK4yju4iKdmIhyH6apUbRaM0MPY6jccutm6fjZElzgVVk7vXISxQdIoRW07TzdCzdQqu7W9g"
+    "ref": "m2d0Av9zCWKOIdhK4yju4nVgCE1nwWnhDa7s0ciABsrNIAiDt9a-dj15JpWQ54wsbevy9LGgFem9jQph5pDk8A"
 }

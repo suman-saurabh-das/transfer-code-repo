@@ -16,7 +16,9 @@
 */
 
 require("dotenv").config(); // Attached environment variables to process.env object.
+
 const express = require("express");
+const workoutRoutes = require("./routes/workouts");
 
 // Creates an express app & stores the reference in app constant.
 const app = express();
@@ -34,7 +36,7 @@ app.listen(process.env.PORT, () => {
 
 // Route handler to respond to a GET request.
 app.get("/", (req, res) => {
-  res.json({ msg: "Welcome to the app !" });  // Sends a json string as response.
+  res.json({ msg: "Welcome to the app !" }); // Sends a json string as response.
 });
 
 // After running the server, check response at: http://localhost:4000/
@@ -47,3 +49,14 @@ app.use((req, res, next) => {
   // next is a function, that we need to call at the end of the middleware to move on to next piece of middleware i.e. to execute the call back function inside get, post, etc.
   next();
 });
+
+// Using the workoutRoutes in our app.
+// This will grab all the routes defined in workouts.js file and add them to the app.
+// app.use(workoutRoutes);
+
+// We can also add a specific path, so that we find the routes only when we come here.
+app.use("/api/workouts", workoutRoutes);
+
+// When sending data to the server (POST/PATCH request), we need to access the data from the req object and we can only access that in an express app when we use a middleware called express.json.
+// For any request that comes in, this middleware looks for a body (data), and if it exists, it passes and attaches it to the request object, so that we can access it in the request handler.
+app.use(express.json());
