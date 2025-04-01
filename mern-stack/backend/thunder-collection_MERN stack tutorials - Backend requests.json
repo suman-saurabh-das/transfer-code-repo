@@ -1,0 +1,23 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "MERN stack tutorials - Backend requests",
+    "collectionId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
+    "dateExported": "2025-04-01T18:42:52.334Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "1b3fc9a9-0034-4292-ac8f-c43c0e0ea90e",
+            "colId": "2c5b64a9-a435-4ad9-a116-bc2820b6f045",
+            "containerId": "",
+            "name": "GET - localhost:4000",
+            "url": "http://localhost:4000/dd",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2025-04-01T18:20:43.196Z",
+            "modified": "2025-04-01T18:26:00.149Z",
+            "headers": []
+        }
+    ],
+    "ref": "m2d0Av9zCWKOIdhK4yju4iKdmIhyH6apUbRaM0MPY6jccutm6fjZElzgVVk7vXISxQdIoRW07TzdCzdQqu7W9g"
+}
