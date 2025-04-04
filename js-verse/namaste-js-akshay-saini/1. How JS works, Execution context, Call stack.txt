@@ -1,0 +1,26 @@
+▣ How JS works & what is execution context ?
+
+  ◉ In JS, the execution context is an abstract concept that represents the environment in which the code is being executed. It has 2 parts -
+    ◈ Memory component (Variable environment): Contains variables & functions as key-value pairs.
+    ◈ Code component (Thread of execution): Code is executed one line at a time.
+  ◉ Every time a function is called, or code is executed, a new execution context is created.
+
+▣ Sample code to understand working of JS
+  var n = 2;
+  function square(num) {
+    var ans = num * num;
+    return ans;
+  }
+  var square2 = square(n);
+  var square4 = square(4);
+
+▣ Call stack: maintains the order of execution of execution contexts.
+  Used to manage the execution context creation, deletion & control.
+  AKA - Execution context stack, Program stack, Control stack, Runtime stack, Machine stack.
+
+  ◉ Initially call stack is empty -> Global execution context is created at the bottom ->
+  ◉ Execution context 1 created on top of GEC -> Execution context 1 gets deleted ->
+  ◉ Control is back to GEC ->
+  ◉ Execution context 2 created on top of GEC -> Execution context 2 gets deleted ->
+  ◉ Control is back to GEC, Global execution context deleted ->
+  ◉ Program ends and call stack is empty.
