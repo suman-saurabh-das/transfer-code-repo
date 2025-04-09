@@ -72,43 +72,43 @@ CASE 2 - all the promises gets rejected
 */
 
 const p1 = new Promise((resolve, reject) => {
-    setTimeout(() => resolve("P1 Success"), 3000)
-    // setTimeout(() => reject("P1 Fail"), 3000)
-})
+  setTimeout(() => resolve("P1 Success"), 3000);
+  // setTimeout(() => reject("P1 Fail"), 3000)
+});
 const p2 = new Promise((resolve, reject) => {
-    setTimeout(() => resolve("P2 Success"), 1000)
-    // setTimeout(() => reject("P2 Fail"), 1000)
-})
+  setTimeout(() => resolve("P2 Success"), 1000);
+  // setTimeout(() => reject("P2 Fail"), 1000)
+});
 const p3 = new Promise((resolve, reject) => {
-    setTimeout(() => resolve("P3 Success"), 2000)
-    // setTimeout(() => reject("P3 Fail"), 2000)
-})
+  setTimeout(() => resolve("P3 Success"), 2000);
+  // setTimeout(() => reject("P3 Fail"), 2000)
+});
 
 Promise.all([p1, p2, p3])
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
+  .then((res) => console.log("Promise.all :", res))
+  .catch((err) => console.log(err));
 
-    // Returns an array of values if all promises are resolved successfully.
-    // If there is any error, returns the first encountered error value.
+// Returns an array of values if all promises are resolved successfully.
+// If there is any error, returns the first encountered error value.
 
 Promise.allSettled([p1, p2, p3])
-    .then(res => console.log(res))
-    .catch(err => console.error(err))
+  .then((res) => console.log("Promise.allSettled :", res))
+  .catch((err) => console.error(err));
 
-    // Returns an array of objects having the promise status and promise value if promise is resolved and a status and reason if a promise if rejected.
+// Returns an array of objects having the promise status and promise value if promise is resolved and a status and reason if a promise if rejected.
 
 Promise.race([p1, p2, p3])
-    .then(res => console.log(res))
-    .catch(err => console.error(err))
+  .then((res) => console.log("Promise.race :", res))
+  .catch((err) => console.error(err));
 
-    // Returns the first settled promise value if resolved or an error if rejected.
+// Returns the first settled promise value if resolved or an error if rejected.
 
 Promise.any([p1, p2, p3])
-    .then(res => console.log(res))
-    .catch(err => console.error(err, err.errors))
+  .then((res) => console.log("Promise.any :", res))
+  .catch((err) => console.error(err, err.errors));
 
-    // Returns the first resolved promise value.
-    // If all promises are rejected, then an Aggregate error containing all the errors gets returned.
+// Returns the first resolved promise value.
+// If all promises are rejected, then an Aggregate error containing all the errors gets returned.
 
 // NOTE - settled means we got the promise result
 // Promise resolved -> success/fulfilled

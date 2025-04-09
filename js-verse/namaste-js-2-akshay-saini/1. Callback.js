@@ -1,5 +1,11 @@
-// Using callback functions to perform asynchronous tasks.
+/*
+  Performing asynchronous tasks in JS -
 
+    JS is synchronous, single threaded language. i.e. whatever code we give to JS, will be quickly executed one line at a time in exact order by the JS engine.
+
+*/
+
+// Using callback functions to perform asynchronous tasks.
 console.log('Program starts');
 function printAfter5seconds() {
   console.log('Async function called');

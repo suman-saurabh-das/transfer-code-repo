@@ -1,3 +1,7 @@
+Namaste JS (Introduction): https://youtu.be/pN6jk0uUrD8?si=BgjCU_PmEefQltho
+How JS works (Execution context): https://youtu.be/ZvbzSrg0afE?si=JuBMcTAKaJdRqPos
+How JS code is executed (Hoisting): https://youtu.be/iLWTnMzWtj4?si=oWKjjEOTan_N8MQD
+
 ▣ How JS works & what is execution context ?
 
   ◉ In JS, the execution context is an abstract concept that represents the environment in which the code is being executed. It has 2 parts -
@@ -16,7 +20,7 @@
 
 ▣ Call stack: maintains the order of execution of execution contexts.
   Used to manage the execution context creation, deletion & control.
-  AKA - Execution context stack, Program stack, Control stack, Runtime stack, Machine stack.
+  AKA: Execution context stack, Program stack, Control stack, Runtime stack, Machine stack.
 
   ◉ Initially call stack is empty -> Global execution context is created at the bottom ->
   ◉ Execution context 1 created on top of GEC -> Execution context 1 gets deleted ->

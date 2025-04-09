@@ -1,4 +1,4 @@
-const cart = ['pens', 'notebooks', 'pencils']
+const cart = ["pens", "notebooks", "pencils"];
 
 /*
 A promise returns an object with a data value and a promise state.
@@ -33,29 +33,31 @@ It can have 3 states -
 Promise objects are immutable. i.e. we can pass the promise object in our code and we need not worry about it getting modified.
 */
 // The createOrder function returns a promise object.
-const promise = createOrder(cart)
+const promise = createOrder(cart);
 promise
   .then((orderId) => proceedToPayment(orderId))
   .then((paymentId) => showOrderSummary(paymentId))
-  .then((paymentInfo) => updateWalletBalance(paymentInfo))
+  .then((paymentInfo) => updateWalletBalance(paymentInfo));
 
 // alter - without using arrow functions
 createOrder(cart)
   .then(function (orderId) {
-    return proceedToPayment(orderId)
-  }).then(function (paymentId) {
-    return showOrderSummary(paymentId)
-  }).then(function (paymentInfo) {
-    return updateWalletBalance(paymentInfo)
+    return proceedToPayment(orderId);
   })
+  .then(function (paymentId) {
+    return showOrderSummary(paymentId);
+  })
+  .then(function (paymentInfo) {
+    return updateWalletBalance(paymentInfo);
+  });
 
 // Example of promise using fetch() method
 
-const GITHUB_API = 'https://api.github.com/users/sumansaurabhdas'
-const user = fetch(GITHUB_API)
-console.log(user);  // Initially this will log a promise in pending state, but by the time we expand the object to see the data, google chrome updates the promise state as it is resolved by then and shows the current state of the promise.
+const GITHUB_API = "https://api.github.com/users/sumansaurabhdas";
+const user = fetch(GITHUB_API);
+console.log(user); // Initially this will log a promise in pending state, but by the time we expand the object to see the data, google chrome updates the promise state as it is resolved by then and shows the current state of the promise.
 
 // The operation that we need to perform after the promise is resolved gets passed inside the then() method which is called on the promise object. And we can access the data returned from the promise inside this function.
 user.then(function (data) {
   console.log(data);
-})
+});
