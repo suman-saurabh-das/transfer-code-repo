@@ -1,6 +1,6 @@
 // Closures in JS: https://youtu.be/qikxEIxsXco?si=dtbZQRn69XC_2edQ
 
-// Closure: Function bundled (bound) together with its lexical environment forms a closure.
+// ▣ Closure: Function bundled (bound) together with its lexical environment forms a closure.
 
 function p() {
   var a = 25;
@@ -10,7 +10,6 @@ function p() {
   q();
 }
 p();
-
 // Here q() has variable a from p() bound together to form a closure.
 
 // ▣ In JS we can -
@@ -55,7 +54,7 @@ v3(); // Returns 25 (as it remembers the lexical scope where it came from)
   ◉ When function was returned along with the code, its lexical environment was also returned i.e. a closure was returned.
 */
 
-// Corner cases of Closures -
+// ▣ Corner cases of Closures -
 
 function x() {
   var a = 25;
@@ -76,7 +75,7 @@ z(); // returns 50 (as it remembers the lexical scope where it came from)
   ◉ The function remembers the reference to the variable and not the value.
 */
 
-// Nested functions -
+// ▣ Nested functions -
 
 function outer() {
   var a = 100;

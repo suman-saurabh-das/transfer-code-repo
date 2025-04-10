@@ -1,6 +1,6 @@
 // Hoisting in JS (Variables & Functions): https://youtu.be/Fnlnw8uY6jo?si=r0lzc-FIZTi13nY1
 
-// Hoisting is the phenomenon in JS which allows us to access the variables and functions even before initializing them. e.g. code below
+// ▣ Hoisting: is the phenomenon in JS which allows us to access the variables and functions even before initializing them. e.g. code below
 
 console.log(x); // undefined
 console.log(printFunction1); // prints whole function
@@ -30,7 +30,7 @@ var printFunction3 = () => {
 };
 
 /*
-  ▣ In JS, global execution context is created first and inside it memory creation occurs first, so that the program first scans for all the variables and functions. For variables (declared using var), it allocates memory & initializes them with undefined. For functions, whole function definition (code) is stored in the memory.
+  ◉ In JS, global execution context is created first and inside it memory creation occurs first, so that the program first scans for all the variables and functions. For variables (declared using var), it allocates memory & initializes them with undefined. For functions, whole function definition (code) is stored in the memory.
 
-  ▣ But in case of function expression & arrow function, since we are declaring them using var variables, the variables get created and are initialized with undefined rather than the function definition being copied, hence they cannot be called/invoked before declaration.
+  ◉ But in case of function expression & arrow function, since we are declaring them using var variables, the variables get created and are initialized with undefined rather than the function definition being copied, hence they cannot be called/invoked before declaration.
 */

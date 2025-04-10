@@ -16,7 +16,7 @@ if (true) {
 }
 
 /*
-  Block Scope -
+  ▣ Block Scope -
     ◉ Whatever variables and functions we can access inside the block.
 
     ◉ In below example, variable a is attached to the global object, hence it is accessible anywhere in our code, but variables b and c have a block level scope and cannot be accessed outside the block.
@@ -36,7 +36,7 @@ console.log(a); // Accessible
 console.log(b); // No longer available
 console.log(c); // No longer available
 
-// Shadowing: refers to the situation where a variable declared in an inner scope (such as a function, block, or loop) has the same name as a variable declared in an outer scope. The inner variable "shadows" or "hides" the outer variable within its scope, meaning that when the inner variable is accessed, the outer variable is not visible.
+// ▣ Shadowing: refers to the situation where a variable declared in an inner scope (such as a function, block, or loop) has the same name as a variable declared in an outer scope. The inner variable "shadows" or "hides" the outer variable within its scope, meaning that when the inner variable is accessed, the outer variable is not visible.
 
 // ◉ If we have a variable a declared using var keyword in global scope as well as inside a block, then the variable initialization which comes later (block level in this case) gets assigned to the variable a.
 
@@ -58,7 +58,7 @@ let b = 100;
 console.log(b); // value of b is 100
 // Here variable b is in a separate memory location in GEC and variable b inside the block is in a different memory location. But inside the block, b = 10 shadows the value of b = 100.
 
-// Shadowing is also applicable to functions -
+// ▣ Shadowing is also applicable to functions -
 
 const c = 100;
 function x() {
@@ -68,7 +68,7 @@ function x() {
 x(); // value of c is 50 (shadowing)
 console.log(c); // value of c is 100
 
-// Illegal shadowing
+// ▣ Illegal shadowing
 
 let a = 10;
 {

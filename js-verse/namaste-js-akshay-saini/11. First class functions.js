@@ -42,7 +42,7 @@ c(); // function calling
 d(); // throws reference error as d is not defined in global scope
 
 /*
-  Difference between Arguments & Parameters -
+  ▣ Difference between Arguments & Parameters -
     ◉ Arguments are actual values passed to the function.
     ◉ parameter1 & parameter2 are local variables inside the function.
 */
@@ -52,13 +52,13 @@ function x(parameter1, parameter2) {
 x("argument1", "argument2");
 
 /*
-  First class functions
+  ▣ First class functions
     ◉ Ability to use functions as values (send a function as parameter/argument or return a function from a function) is known as first class functions.
       ◈ Functions can be passed into another function as a parameter.
       ◈ Functions can also return a function.
 */
 
-// Function taking function as an input parameter.
+// ◈ Function taking function as an input parameter.
 var z = function inFunc() {
   console.log("I am inner function");
 };
@@ -67,11 +67,10 @@ function outFunc(param) {
 }
 outFunc(z);
 
-// Function returning a function.
+// ◈ Function returning a function.
 function returnFunc() {
   return function () {
     console.log("empty function returned");
   };
 }
-
 console.log(returnFunc());

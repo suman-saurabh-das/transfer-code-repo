@@ -25,21 +25,21 @@ function cb() {
 myFunc(cb);
 
 /*
-    ◉ Call back functions are called so because these functions are called in some later part of the code. Here we are giving the responsibility of calling the passed function to another function.
+    ◉ Callback functions are called so because these functions are called in some later part of the code. Here we are giving the responsibility of calling the passed function to another function.
 
-    ◉ Main thread - JS has only one call stack which is known as the main thread. Whatever is executed in the page is executed through the call stack only. If any operation blocks the call stack, it is known as blocking the main thread.
+    ◉ Main thread: JS has only one call stack which is known as the main thread. Whatever is executed in the page is executed through the callstack only. If any operation blocks the callstack, it is known as blocking the main thread.
 
     ◉ We should not block our main thread, we should use async operations for performing tasks which take time. e.g. By use of setTimeout() method.
 */
 
-// Event listeners
+// ▣ Event listeners
 document
   .getElementById("click-btn")
   .addEventListener("click", function btnClicked() {
     console.log("Button Clicked");
   });
 
-// Closures with event listener
+// ▣ Closures with event listener
 function attachEventListeners() {
   let count = 0;
   document

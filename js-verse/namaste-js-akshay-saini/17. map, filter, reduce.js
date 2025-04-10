@@ -1,3 +1,7 @@
+// map, filter & reduce in JS: https://youtu.be/zdp0zrpKzIE?si=E2EY85E6KJdtJJ9K
+
+// ▣ Map function: is used to iterate through an array and create a new array by modifying each element based on the function that is passed to it.
+
 // ---------- Map method ----------
 const arr = [5, 2, 1, 4, 3];
 // double
@@ -12,6 +16,8 @@ const doubleArr = arr.map(double);
 console.log(doubleArr);
 const binaryArr = arr.map(numberToBinary);
 console.log(binaryArr);
+
+// ▣ Filter function: is used to filter the values inside an array. This function also creates a new array based on the function that is passed to it.
 
 // ---------- Filter method ----------
 const arr2 = [5, 2, 1, 4, 3];
@@ -38,7 +44,7 @@ console.log(eArr);
 
 const arr3 = [6, 3, 2, 7, 1, 8, 5, 4, 9];
 
-// ---------- normal sum function ----------
+// ---------- Normal sum function ----------
 function findSum(arr3) {
   let sum = 0;
   for (let i = 0; i < arr3.length; i++) {
@@ -48,7 +54,7 @@ function findSum(arr3) {
 }
 console.log(findSum(arr3));
 
-// normal find max number function
+// ---------- Normal find max number function ----------
 function findMax(arr3) {
   let max = Number.MIN_VALUE;
   for (let i = 0; i < arr3.length; i++) {
@@ -60,6 +66,8 @@ function findMax(arr3) {
 }
 console.log(findMax(arr3));
 
+// ▣ Reduce function: is used to iterate/(operate on)/(take) all the values of the array and get a single value out of them. E.g. To find the sum of all elements in the array. Or to find the largest or smallest number in the array.
+
 // ---------- Reduce method ----------
 
 // Syntax
@@ -69,14 +77,14 @@ arrayName.reduce(function (accumulatorVal, currentValArray) {
   // currentValArray is the current value of the array while iterating the array
 }, initialAccumulatorVal);
 
-// sum using reduce
+// ---------- Sum using reduce ----------
 const sumOfArr3 = arr3.reduce(function (acc, curr) {
   acc = acc + curr;
   return acc;
 }, 0);
 console.log(sumOfArr3);
 
-// max using reduce
+// ---------- Max using reduce ----------
 const maxOfArr3 = arr3.reduce(function (acc, curr) {
   if (curr > acc) {
     acc = curr;
@@ -85,7 +93,7 @@ const maxOfArr3 = arr3.reduce(function (acc, curr) {
 }, Number.MIN_VALUE);
 console.log(maxOfArr3);
 
-// Examples
+// ---------- Examples ----------
 const users = [
   { firstName: "Albert", lastName: "Drake", age: 18 },
   { firstName: "Dane", lastName: "Conman", age: 22 },
@@ -112,7 +120,7 @@ console.log(ageMap);
 const minor = users.filter((val) => val.age < 20).map((val) => val.firstName);
 console.log(minor);
 
-// Using reduce
+// Using reduce to get first name of users whose age is < 20
 const minor2 = users.reduce(function (acc, curr) {
   if (curr.age < 20) {
     acc.push(curr.firstName);

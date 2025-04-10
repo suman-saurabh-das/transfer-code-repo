@@ -1,0 +1,45 @@
+Google's v8 Architecture: https://youtu.be/2WJL19wDH68?si=_Fu198H1uogh7m02
+
+  ◉ Javascript Runtime Environment (JRE): contains all things required to run the JS code.
+    ◈ It has a JS engine, Web-APIs, event loop, callback queue, micro-task queue.
+    ◈ Node.js is used to run JS code outside our browser. It is an open source JRE.
+
+  ◉ JS engine: converts human readable high level language into machine understandable low level language.
+
+  ◉ JS Engine takes code -> Parsing -> Compilation -> Execution
+
+▣ Parsing: Code is broken down into tokens. E.g. let a = 10
+  ◉ Syntax parser: Takes the code and converts into an AST (Abstract syntax tree).
+  ◉ AST is passed to compilation phase.
+
+▣ Compilation: JS has Just In Time compilation (JIT)
+  ◉ Interpreter: takes the code and starts executing it line by line. Code execution is faster.
+  ◉ Compiler: whole code is compiled (more optimized version of code is generated) before code execution. Code is more efficient.
+
+  ◉ JS is neither purely interpreted, nor purely compiled language.
+  ◉ JS engines can use interpreter and compiler together and that makes it a JIT compiled language.
+
+  ◉ AST code that we get after parsing is converted to byte code by the interpreter.
+  ◉ At the same time the compiler optimizes the code. It is a multi step process.
+  ◉ Byte code is then passed to execution phase.
+
+▣ Execution
+
+  ◉ Ahead of time compilation: Some JS engines use this.
+  ◉ The compiler takes a piece of code and tries to optimize it as much as it can.
+  ◉ It also produces the byte code, which goes to execution phase.
+
+  ◉ JS code execution requires memory heap and the call stack.
+  ◉ Memory heap: Place where all the memory is stored. It is constantly in sync with the callstack, garbage collector, etc. All variables and functions are assigned memory here.
+
+▣ Garbage Collector: Tries to free up space (memory) whenever a variable or function is not in use.
+  ◉ It uses the Mark & Sweep algorithm.
+  ◉ There are many forms of optimizations that a compiler does for the code.
+  ◉ E.g. In-lining, Inline caching, copy elision.
+
+▣ V8 Engine
+  ◉ Interpreter called ignition.
+  ◉ Compiler called turbo fan (optimizing compiler).
+  ◉ Flow diagram: https://miro.medium.com/v2/resize:fit:828/format:webp/1*8b9Vo-OfPsxUGDxXBKVdRA.png
+
+  ◉ More details: https://braineanear.medium.com/the-v8-engine-series-i-architecture-ba08a38c54fa

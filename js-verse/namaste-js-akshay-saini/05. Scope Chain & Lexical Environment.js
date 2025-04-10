@@ -17,10 +17,8 @@ function outer() {
     console.log(num);
   }
 }
-
 // lexical parent of function inner() is function outer()
 // lexical parent of function outer() is global execution context.
 // lexical parent of global execution context is null.
-
 outer();
 console.log(num); // throws error as "num" is not defined in global scope.
